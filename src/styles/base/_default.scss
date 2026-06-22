@@ -1,0 +1,47 @@
+@use '../abstracts/variables' as variable;
+
+html {
+  box-sizing: border-box;
+  // scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: variable.$font-primary, system-ui, sans-serif;
+  background-color: variable.$color-blue;
+  color: variable.$color-main;
+  margin: 0;
+}
+
+.container {
+  max-width: 1840px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+/* Отключаем системную синюю подсветку при тапе на iOS/Android */
+
+input, 
+button, 
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Для старых версий Android */
+}
+
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
