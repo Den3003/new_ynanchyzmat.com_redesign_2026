@@ -16,6 +16,8 @@
 
 @use 'layouts/header';   // Шапка сайта
 @use 'layouts/header-flex';   
+@use 'layouts/footer';   
+@use 'layouts/footer-flex';   
 
 // ── 4. Компоненты ───────────────────────────────
 // Папка components ← независимые блоки

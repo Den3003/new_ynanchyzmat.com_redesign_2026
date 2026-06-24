@@ -1,0 +1,44 @@
+.footer {
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+  }
+
+  &__contacts-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px 0;
+  }
+
+  &__contacts-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__mail {
+    letter-spacing: 0.03em;
+  }
+
+  &__address {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+  }
+
+  &__address-text {
+    margin: 0;
+  }
+}

@@ -2,6 +2,11 @@
 .header {
   padding: 60px 0 0;
 
+  &__logo-link {
+    font-size: 0;
+    line-height: 0;
+  }
+
   &__country {
     font-size: 20px;
   }
