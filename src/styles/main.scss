@@ -18,9 +18,16 @@
 @use 'layouts/header-flex';   
 @use 'layouts/footer';   
 @use 'layouts/footer-flex';   
+@use 'layouts/main-body';   //  Стили body главной страницы с слайдером
 
 // ── 4. Компоненты ───────────────────────────────
 // Папка components ← независимые блоки
 
 @use 'components/navigation';  //  Лист-меню в шапке
 @use 'components/search';  //  Форма поиска по сайту
+@use 'components/swiper';  //  Стили Swiper`а
+
+// ── 5. Страницы ─────────────────────────────────
+// Папка pages ← стили конкретных страниц
+
+@use 'pages/main-celebration';     //  Главный блок на главной странице

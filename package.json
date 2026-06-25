@@ -20,5 +20,8 @@
     "vite-plugin-html-inject": "^1.1.2",
     "vite-plugin-image-optimizer": "^2.0.3",
     "vite-plugin-svg-icons-ng": "^1.9.1"
+  },
+  "dependencies": {
+    "swiper": "^12.2.0"
   }
 }

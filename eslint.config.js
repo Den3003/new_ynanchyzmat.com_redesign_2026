@@ -24,6 +24,7 @@ export default [
 
     // 3. Ваши собственные правила (переопределение или дополнение)
     rules: {
+      'no-unused-vars': ["error", { "varsIgnorePattern": "swiper" }],
       // Отключаем правило, которое требует явный return в стрелочных функциях
       'arrow-body-style': ['error', 'as-needed'],
       // Запрещаем использование var

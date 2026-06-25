@@ -1,0 +1,16 @@
+@use '../abstracts/variables' as variable;
+
+.main-body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  // height: 100dvh;
+  font-family: variable.$font-primary, system-ui, sans-serif;
+  background-color: variable.$color-blue;
+  color: variable.$color-main;
+  overflow: hidden;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  margin: 0;
+}

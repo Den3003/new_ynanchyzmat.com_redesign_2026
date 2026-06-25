@@ -12,12 +12,13 @@ html {
 body {
   min-width: 320px;
   min-height: 100vh;
-  font-family: variable.$font-primary, system-ui, sans-serif;
-  background-color: variable.$color-blue;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  font-family: variable.$font-primary, system-ui, sans-serif;;
+  // background-color: variable.$color-main;
   color: variable.$color-main;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // line-height: 1.3;
   margin: 0;
 }
 

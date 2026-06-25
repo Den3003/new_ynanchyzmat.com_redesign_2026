@@ -8,8 +8,87 @@
     <link rel="preload" href="/fonts/Futura-500.woff2" as="font" type="font/woff2" crossorigin>
     <title>Ynanchyzmat</title>
   </head>
-  <body>
+  <body class="main-body">
     <load src="/src/html/header.html" />
+    
+    <main class="swiper">
+        <div class="swiper-wrapper">
+          <section class="swiper-slide">
+            <div class="container main-celebration">
+              <div class="main-celebration__bg" style="background-image: url('/src/assets/images/main/oilRigs.jpg');"></div>
+              <div class="main-celebration__block">
+                <h1 class="main-celebration__title">
+                  This year, ES Ynanch Hyzmat proudly celebrates its 10th anniversary
+                </h1>
+
+                <p class="main-celebration__text">
+                  A significant milestone that reflects a decade of dedication, growth,
+                  and successful partnership. Over the years, the company has established
+                  itself as a reliable EPC and industrial service provider,
+                  contributing to the development of Turkmenistan’s oil and gas, chemical,
+                  and energy sectors.
+                </p>
+
+                <button class="main-celebration__button" type="button">
+                  Read the CEO's Message
+                  <svg class="main-body__arrow" aria-hidden="true" width="18" height="16">
+                    <use href="#icon-arrow-right"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="swiper-slide main-analyzers">
+            <div class="main-analyzers__block">
+              <h2 class="main-analyzers__title">
+                Ynanch Hyzmat supplies of analyzers
+              </h2>
+
+              <button class="main-analyzers__button">
+                Learn More
+              </button>
+            </div>
+          </section>
+
+          <section class="swiper-slide">
+            <div class="pollution__block">
+              <h2>
+                Ynanch Hyzmat introduces our new AIR POLLUTION CONTROL SYSTEM
+              </h2>
+
+              <button>
+                Learn More
+              </button>
+            </div>
+          </section>
+
+          <section class="swiper-slide">
+            <div class="h2s__block">
+              <h2>
+                Ynanch Hyzmat H2S dispersion modelling system
+              </h2>
+
+              <button>
+                Learn More
+              </button>
+            </div>
+          </section>
+
+          <section class="swiper-slide">
+            <div class="extinguisher__block">
+              <h2>
+                Fire Fighting System & Maintenance
+              </h2>
+
+              <button>
+                Learn More
+              </button>
+            </div>
+          </section>
+        </div>
+    </main>
+    
     <load src="/src/html/footer.html" />
     <script type="module" src="/src/js/main.js"></script>
   </body>
