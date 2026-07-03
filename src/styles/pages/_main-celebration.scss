@@ -1,9 +1,17 @@
 @use '../abstracts/variables' as variable;
 
 .main-celebration {
+  position: relative;
   height: 100%;
   display: flex;
   align-items: center;
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
 
   &__block {
     max-width: 1124px;
@@ -21,7 +29,6 @@
   }
 
   &__button {
-    box-sizing: border-box;
     width: 309px;
     height: 51px;
     background-color: variable.$color-main;
@@ -32,9 +39,9 @@
     border: none;
     padding: 0;
     // padding: 12px 22px;
-    font-family: inherit;
     font-size: 20px;
-    // font-weight: 500;
+    font-weight: 500;
     color: variable.$color-orange-primary;
+    cursor: pointer;
   }
 }

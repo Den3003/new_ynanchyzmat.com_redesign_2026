@@ -22,6 +22,7 @@
     "vite-plugin-svg-icons-ng": "^1.9.1"
   },
   "dependencies": {
+    "modern-normalize": "^3.0.1",
     "swiper": "^12.2.0"
   }
 }

@@ -12,14 +12,15 @@
     <load src="/src/html/header.html" />
     
     <main class="swiper">
-        <div class="swiper-wrapper">
+        <section class="swiper-wrapper">
+          <h1 class="visually-hidden">Ynanch Hyzmat</h1>
           <section class="swiper-slide">
             <div class="container main-celebration">
-              <div class="main-celebration__bg" style="background-image: url('/src/assets/images/main/oilRigs.jpg');"></div>
+              <div class="main-celebration__background" style="background-image: url('/src/assets/images/main/oilRigs.jpg');"></div>
               <div class="main-celebration__block">
-                <h1 class="main-celebration__title">
+                <h2 class="main-celebration__title">
                   This year, ES Ynanch Hyzmat proudly celebrates its 10th anniversary
-                </h1>
+                </h2>
 
                 <p class="main-celebration__text">
                   A significant milestone that reflects a decade of dedication, growth,
@@ -39,15 +40,18 @@
             </div>
           </section>
 
-          <section class="swiper-slide main-analyzers">
-            <div class="main-analyzers__block">
-              <h2 class="main-analyzers__title">
-                Ynanch Hyzmat supplies of analyzers
-              </h2>
-
-              <button class="main-analyzers__button">
-                Learn More
-              </button>
+          <section class="swiper-slide">
+            <div class="container main-analyzers">
+              <div class="main-analyzers__background" style="background-image: url('/src/assets/images/main/analyzers.jpg');"></div>
+              <div class="main-analyzers__block">
+                <h2 class="main-analyzers__title">
+                  Ynanch Hyzmat supplies of analyzers
+                </h2>
+                
+                <button class="main-analyzers__button">
+                  Learn More
+                </button>
+              </div>
             </div>
           </section>
 
@@ -86,7 +90,69 @@
               </button>
             </div>
           </section>
-        </div>
+
+          <nav class="swiper__progress-bar" aria-label="Навигация по слайдам">
+            <div class="container">
+              <div class="swiper__progress-flex">
+                <button
+                  type="button"
+                  data-index="0"
+                  class="swiper__progress-item"
+                  aria-current="true"
+                  aria-label="Переход на слайд 1 из 5"
+                >
+                  <span class="swiper__progress-line">
+                    <span class="swiper__progress-fill"></span>
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  data-index="1"
+                  class="swiper__progress-item"
+                  aria-label="Переход на слайд 2 из 5"
+                >
+                  <span class="swiper__progress-line">
+                    <span class="swiper__progress-fill"></span>
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  data-index="2"
+                  class="swiper__progress-item"
+                  aria-label="Переход на слайд 3 из 5"
+                >
+                  <span class="swiper__progress-line">
+                    <span class="swiper__progress-fill"></span>
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  data-index="3"
+                  class="swiper__progress-item"
+                  aria-label="Переход на слайд 4 из 5"
+                >
+                  <span class="swiper__progress-line">
+                    <span class="swiper__progress-fill"></span>
+                  </span>
+                </button>
+            
+                <button
+                  type="button"
+                  data-index="4"
+                  class="swiper__progress-item"
+                  aria-label="Переход на слайд 5 из 5"
+                >
+                  <span class="swiper__progress-line">
+                    <span class="swiper__progress-fill"></span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </nav>
+        </section>
     </main>
     
     <load src="/src/html/footer.html" />
