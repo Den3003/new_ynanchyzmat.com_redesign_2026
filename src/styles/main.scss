@@ -31,3 +31,7 @@
 // Папка pages ← стили конкретных страниц
 
 @use 'pages/main-celebration';     //  Главный блок на главной странице
+@use 'pages/main-analyzers';     //  Блок об анализаторах на главной странице 
+@use 'pages/main-pollution';     //  Блок pollution на главной странице 
+@use 'pages/main-h2s';     //  Блок h2s на главной странице 
+@use 'pages/main-extinguisher';     //  Блок extinguisher на главной странице 

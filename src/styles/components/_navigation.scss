@@ -1,11 +1,18 @@
+@use '../abstracts/variables' as variable;
 
 .navigation {
   &__list {
-    padding: 0;
+    padding: 16.5px 30px;
     margin: 0;
     list-style: none;
     display: flex;
     gap: 0 30px;
+    transition: all .3s ease-in;
+
+    &:has(.navigation__link:hover) {
+      background-color: variable.$color-main;
+      color: variable.$color-gray;
+    }
   }
 
   &__link {
@@ -13,5 +20,10 @@
     color: inherit;
     font-size: 20px;
     font-weight: 500;
+    transition: color .2s ease-in;
+
+    &:hover {
+      color: variable.$color-orange-primary;
+    }
   }
 }
