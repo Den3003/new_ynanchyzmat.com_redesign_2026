@@ -5,6 +5,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  // display: none;
 
   &__background {
     position: absolute;
@@ -17,6 +18,7 @@
   &__block {
     position: relative;
     max-width: 1124px;
+    // display: none;
     z-index: 10;
   }
 

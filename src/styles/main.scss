@@ -24,6 +24,7 @@
 // Папка components ← независимые блоки
 
 @use 'components/navigation';  //  Лист-меню в шапке
+@use 'components/modal';  //  Модальное окно
 @use 'components/search';  //  Форма поиска по сайту
 @use 'components/swiper';  //  Стили Swiper`а
 

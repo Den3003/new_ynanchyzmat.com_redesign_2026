@@ -7,8 +7,15 @@ import 'virtual:svg-icons-register';
 import Swiper from 'swiper';
 // Добавляем импорт модуля Mousewheel
 import { Autoplay, EffectFade, Mousewheel } from 'swiper/modules';
+import { modalController } from './modules/modal';
 
 tick();
+modalController({
+  modal: '.modal',
+  btnOpen: '.main-celebration__button',
+  btnClose: '.modal__close',
+  blockVisible: '.main-celebration__block',
+});
 
 const swiper = new Swiper('.swiper', {
   modules: [Autoplay, EffectFade, Mousewheel], // Регистрируем модуль в массиве modules
