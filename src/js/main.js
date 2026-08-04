@@ -8,6 +8,7 @@ import Swiper from 'swiper';
 // Добавляем импорт модуля Mousewheel
 import { Autoplay, EffectFade, Mousewheel } from 'swiper/modules';
 import { modalController } from './modules/modal';
+import { buildIndexFromDOM, initSearch } from './modules/search';
 
 tick();
 modalController({
@@ -17,7 +18,12 @@ modalController({
   blockVisible: '.main-celebration__block',
 });
 
-const swiper = new Swiper('.swiper', {
+const searchIndex = buildIndexFromDOM();
+console.log('searchIndex: ', searchIndex);
+
+initSearch();
+
+export const swiper = new Swiper('.swiper', {
   modules: [Autoplay, EffectFade, Mousewheel], // Регистрируем модуль в массиве modules
   loop: true, // Бесконечный цикл слайдов
   allowTouchMove: true, // Разрешить перелистывание свайпом
