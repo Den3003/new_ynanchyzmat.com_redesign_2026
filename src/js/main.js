@@ -9,6 +9,7 @@ import Swiper from 'swiper';
 import { Autoplay, EffectFade, Mousewheel } from 'swiper/modules';
 import { modalController } from './modules/modal';
 import { buildIndexFromDOM, initSearch } from './modules/search';
+import { initNavigation } from './modules/navigation';
 
 tick();
 modalController({
@@ -22,6 +23,7 @@ const searchIndex = buildIndexFromDOM();
 console.log('searchIndex: ', searchIndex);
 
 initSearch();
+initNavigation();
 
 export const swiper = new Swiper('.swiper', {
   modules: [Autoplay, EffectFade, Mousewheel], // Регистрируем модуль в массиве modules
