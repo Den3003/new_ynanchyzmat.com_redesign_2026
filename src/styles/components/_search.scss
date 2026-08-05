@@ -22,9 +22,10 @@
   transition: 
     // width 0.32 cubic-bezier(0.4, 0, 0.2, 1),
     clip-path 0.32s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
+    box-shadow 0.2s ease;
+    // transform 0.15s ease;
     // z-index: -1;
+  will-change: clip-path;
   
   &:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.24);
@@ -112,6 +113,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 9px 0 0;
     // background: variable.$color-orange-primary;
     color: variable.$color-gray;
     width: 32px;
