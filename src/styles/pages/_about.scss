@@ -436,6 +436,10 @@
   // Секция Company Timeline
 
 
+  &__timeline {
+    margin: 0 0 240px;
+  }
+
   &__timeline-title {
     color: variable.$color-black;
     font-size: 36px;

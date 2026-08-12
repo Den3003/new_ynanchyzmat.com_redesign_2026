@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as variable;
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -5,6 +7,13 @@
   width: 100%;
   z-index: 10;
   padding: 30px 0;
+
+  &.footer_black {
+    color: variable.$color-black;
+    position: static;
+    margin: 0 0 65px;
+    padding: 0;
+  }
 
   &__title {
     font-size: 20px;
