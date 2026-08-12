@@ -1,0 +1,612 @@
+@use '../abstracts/variables' as variable;
+
+.about {
+
+  // Одинаковые стили
+
+  &__sub-title {
+    color: variable.$color-black;
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 20px;
+  }
+
+  // Секция hero
+
+  &__hero {
+    // position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: variable.$color-about-gray-bg;
+  }
+
+  &__hero-container {
+    position: relative;
+    height: 100%;
+  }
+
+  &__hero-flex {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  &__title {
+    font-size: 150px;
+    font-weight: 500;
+    margin: 0 0 30px;
+  }
+
+  &__text {
+    font-size: 20px;
+    max-width: 800px;
+    margin: 0 0 80px;
+  }
+
+  &__hero-image-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__hero-image {
+    display: block;
+  }
+
+
+  // Секция purpose
+
+  &__purpose {
+    padding: 60px 0 0;
+    margin: 0 0 100px;
+  }
+
+  &__purpose-title {
+    color: variable.$color-black;
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+
+  &__purpose-text {
+    color: variable.$color-black;
+    font-size: 20px;
+    margin: 0 0 20px;
+  }
+
+  &__purpose-grid {
+    display: grid;
+    grid-template-areas: 
+      "img mission"
+      "img vision";
+  }
+
+  &__purpose-image {
+    grid-area: img;
+  }
+
+  &__purpose-mission {
+    grid-area: mission;
+    background: variable.$color-blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+  }
+
+  &__purpose-vision {
+    grid-area: vision;
+    background: variable.$color-orange-secondary;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+  }
+
+  &__purpose-sub-title {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0 0 15px;
+  }
+
+  &__purpose-sub-text {
+    font-size: 20px;
+    margin: 0;
+
+    &:not(:last-child) {
+      margin: 0 0 25px;
+    }
+  }
+
+
+  // Секция history
+
+  &__history {
+    margin: 0 0 100px;
+  }
+
+  &__history-grid {
+    display: flex;
+    justify-content: space-between;
+    // grid-template-columns: minmax(600px, 660px) 1fr;
+    
+  }
+
+  &__history-wrapper-text {
+    color: variable.$color-black;
+    max-width: 660px;
+  }
+
+  &__history-text {
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 0;
+
+    &:not(:last-child) {
+      margin: 0 0 25px;
+    }
+  }
+
+  &__history-figure {
+    position: relative;
+    margin: 0;
+
+    &:after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55.44%, rgba(0, 0, 0, 0.5) 100%);
+    }
+  }
+
+  &__history-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__history-figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    text-align: center;
+    max-width: 635px;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 auto;
+    z-index: 1;
+  }
+
+
+  // Секция approach
+
+  &__approach {
+    margin: 0 0 100px;
+  }
+
+  &__approach-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__approach-item {
+    background: variable.$color-about-gray-bg;
+    display: flex;
+
+    &:not(:last-child) {
+      margin: 0 0 40px;
+    }
+  }
+
+  &__approach-image {
+    display: block;
+  }
+
+  &__approach-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 30px 0;
+    padding: 0 50px;
+  }
+
+  &__approach-content-title {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+    // margin: 0 0 30px;
+  }
+
+  &__approach-content-text {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  &__approach-content-link {
+    display: flex;
+    gap: 0 10px;
+    text-decoration: none;
+    color: inherit;
+    background: variable.$color-orange-primary;
+    font-size: 20px;
+    padding: 12px 22px;
+  }
+
+
+  // Секция achievements
+
+  &__achievements {
+    margin: 0 0 100px;
+  }
+
+  &__achievements-flex {
+    display: flex;
+    justify-content: space-between;
+    color: variable.$color-black;
+  }
+
+  &__achievements-content-wrapper {
+    max-width: 1160px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 160px 0;
+  }
+
+  &__achievements-text {
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+    max-width: 660px;
+    margin: 0;
+  }
+
+  //  Swiper
+
+  &__achievements-swiper-wrapper-with-control {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 275px;
+  }
+
+  &__achievements-swiper-wrapper {
+    max-width: 915px;
+  }
+
+  &__achievements-sliders-wrapper {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__achievements-slider-item {
+    width: max-content;
+    background: inherit;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 0;
+    transition: transform 0.3s ease;
+
+    &.swiper-slide-active {
+      transform: scale(1.30); // чуть крупнее, можно подкрутить 1.05–1.15
+      // z-index: 2;
+      // opacity: 1;
+
+      /* .product-card {
+        box-shadow: 0 16px 32px rgba(0,0,0,0.12); // тень только у активной
+        border-color: #ccc;
+      } */
+    }
+  }
+
+  &__achievements-slide-title {
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__achievements-projects-title {
+    max-width: 100px;
+  }
+
+  &__achievements-engineers-title {
+    max-width: 118px;
+  }
+
+  &__achievements-number-work {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__achievements-number-span {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &__achievements-button-icon {
+    width: 100%;
+    height: auto;
+  }
+
+  &__achievements-button {
+    // height: 50px;
+    all: unset;
+    cursor: pointer;
+    width: 55px;
+    // height: 100px;
+  }
+
+
+  // Секция Our key Clients
+
+  &__clients {
+    margin: 0 0 100px;
+  }
+
+  &__clients-flex {
+    display: flex;
+    justify-content: space-between;
+    color: variable.$color-black;
+  }
+
+  &__clients-image {
+    display: block;
+  }
+
+  &__clients-content-wrapper {
+    max-width: 1160px;
+    width: 100%;
+  }
+
+  &__clients-text {
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 0 0 140px;
+  }
+
+  //  Swiper
+
+  &__clients-swiper-wrapper-with-control {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 265px;
+  }
+
+  &__clients-swiper-wrapper {
+    max-width: 915px;
+  }
+
+  &__clients-sliders-wrapper {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__clients-slider-item {
+    width: max-content;
+    // background: inherit;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // gap: 10px 0;
+    transition: transform 0.3s ease;
+
+    &.swiper-slide-active {
+      transform: scale(1.50); // чуть крупнее, можно подкрутить 1.05–1.15
+      // z-index: 2;
+      // opacity: 1;
+
+      /* .product-card {
+        box-shadow: 0 16px 32px rgba(0,0,0,0.12); // тень только у активной
+        border-color: #ccc;
+      } */
+    }
+  }
+
+  &__clients-button-icon {
+    width: 100%;
+    height: auto;
+  }
+
+  &__clients-button {
+    all: unset;
+    cursor: pointer;
+    width: 55px;
+  }
+
+  // Секция Company Timeline
+
+
+  &__timeline-title {
+    color: variable.$color-black;
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+
+  &__timeline-line {
+    height: 1px;
+    background: variable.$color-black;
+    margin: 0 0 40px;
+  }
+
+
+  //  Swiper
+
+  &__timeline-swiper-wrapper-with-control {
+    display: grid;
+    grid-template-columns: minmax(100px, 240px) minmax(222px, 225px) 1fr;
+    align-items: center;
+  }
+
+  &__timeline-swiper {
+    position: relative;
+    // flex:1 1 auto;
+    height: /* calc(var(--digit-box) * 3) */732px;   /* видно 3 слайда: prev / active / next */
+    overflow: hidden;
+  }
+
+  &__timeline-swiper-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__timeline-swiper-buttons-control {
+    display: flex;
+    flex-direction: column;
+    // flex: 0 0 auto;
+    gap: 50px 0;
+    // flex:1 1 auto;
+    // max-width: max-content;
+  }
+
+
+  &__timeline-button {
+    all: unset;
+    cursor: pointer;
+    width: 100px;
+    // transform: rotate(90deg);
+  }
+
+  &__timeline-button-icon {
+    width: 100%;
+    height: auto
+  }
+
+  &__timeline-20 {
+    position: relative;
+    z-index: 1;
+    // display: block;
+    font-size: 200px;
+    font-weight: 700;
+    // flex: 0 0 auto;
+    background-color: transparent;
+    color: variable.$color-black;
+    user-select: none;
+  }
+
+  &__timeline-20-circle {
+    position: absolute;
+    right: -130%;
+    z-index: -1;
+    top: 50%;
+    // width: 300px;
+    // height: 300px;
+    transform: translateY(-50%);
+  }
+
+  &__timeline-slider-item {
+    position: relative;
+    height: auto;
+    padding: 0 0 0 12px;
+    display: grid;
+    grid-template-columns: minmax(100px, 415px) 1fr;
+    z-index: 10;
+    // display: flex;
+    // align-items: center;
+    // width: 100%;
+
+    &:not(:last-child) {
+      &:after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        content: '';
+        display: block;
+        width: 850px;
+        height: 2px;
+        background: variable.$color-black;
+      }
+    }
+
+    &.swiper-slide-active {
+      .about__timeline-year {
+        color: variable.$color-black;
+        // font-weight: 700;
+      }
+
+      .about__timeline-sub-title {
+        color: variable.$color-black;
+      }
+
+      .about__timeline-text {
+        color: variable.$color-black;
+      }
+    }
+  }
+
+  &__timeline-year {
+    font-size: 200px;
+    color: variable.$color-gray-year;
+    font-weight: 700;
+    transition: color .3s ease;
+  }
+
+  &__timeline-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // gap: 20px 0;
+  }
+
+  &__timeline-sub-title {
+    // color: variable.$color-black;
+    color: variable.$color-gray-year;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    transition: color .3s ease;
+  }
+
+  &__timeline-text {
+    font-size: 20px;
+    color: variable.$color-gray-year;
+    // color: variable.$color-black;
+    margin: 0;
+    // max-width: 335px;
+    text-align: center;
+    transition: color .3s ease;
+  }
+
+
+
+
+  /* .ring{
+    position:absolute;
+    left: -30px;
+    top: 50%;
+    // width: 300px;
+    // height: 300px;
+    transform: translateY(-50%);
+    z-index: 5;
+    pointer-events:none;
+  } */
+  /* .ring circle{
+    fill:none;
+    stroke:orange;
+    stroke-width:2px;
+    transition: stroke-width .3s ease;
+  } */
+
+}

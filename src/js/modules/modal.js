@@ -2,6 +2,10 @@ export const modalController = ({modal, btnOpen, btnClose, blockVisible, time = 
   const buttonElements = document.querySelectorAll(btnOpen);  
   const modalElem = document.querySelector(modal); 
   const blockHidden = document.querySelector(blockVisible); 
+
+  if (!modalElem) {
+    return;
+  }
         
   // здесь мы прописываем стили для основного блока модального окна
   modalElem.style.cssText = `  
