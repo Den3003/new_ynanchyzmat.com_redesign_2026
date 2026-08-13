@@ -21,7 +21,7 @@
   clip-path: inset(0 0 0 calc(100% - 143px) round 20px);
   transition: 
     // width 0.32 cubic-bezier(0.4, 0, 0.2, 1),
-    clip-path 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    clip-path 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.2s ease;
     // transform 0.15s ease;
     // z-index: -1;
@@ -204,7 +204,43 @@
     font-size: 13px;
     color: #8a8a8f;
   }
+
+  &.search_black {
+
+    .search__trigger {
+      border: 1px solid variable.$color-black;
+      padding: 0;
+      justify-content: center;
+      width: 143px;
+      height: 41px;
+    }
+
+    & {
+      justify-content: end;
+      clip-path: inset(0 0 0 calc(100% - 146px) round 20px);
+      height: 44px;
+
+      &.is-expanded {
+        clip-path: inset(0 0 0 0);
+        // width: min(340px, 78vw);
+        // background: var(--pill-bg-hover);
+
+        .search__panel {
+          opacity: 1;
+          pointer-events: auto;
+          border: 1px solid variable.$color-black;
+          border-radius: 20px;
+        }
+
+        .search__trigger {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+    }
+  }
 }
+
 
 /* target section highlight when jumping from a result */
 .content-section {

@@ -16,6 +16,7 @@
 
 @use 'layouts/header';   // Шапка сайта
 @use 'layouts/header-flex';   
+@use 'layouts/header-black';   
 @use 'layouts/footer';   
 @use 'layouts/footer-flex';   
 @use 'layouts/main-body';   //  Стили body главной страницы с слайдером
@@ -37,3 +38,4 @@
 @use 'pages/main-h2s';     //  Блок h2s на главной странице 
 @use 'pages/main-extinguisher';     //  Блок extinguisher на главной странице 
 @use 'pages/about';     //  Страница About Us 
+@use 'pages/methodology';     //  Страница Methodology

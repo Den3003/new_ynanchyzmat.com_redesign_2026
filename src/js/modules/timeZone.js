@@ -11,7 +11,9 @@ const clockElement = document.querySelector('.header__time');
 // 2. Функция, которая берет системное время юзера и «сдвигает» его отображение под Ашхабад
 export function tick(){
   const now = new Date();
-  clockElement.textContent = ashgabatFormatter.format(now);
+  if (clockElement) {
+    clockElement.textContent = ashgabatFormatter.format(now);
+  }
 }
 
 // 4. Запускаем интервал каждую секунду

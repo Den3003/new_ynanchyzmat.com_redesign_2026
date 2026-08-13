@@ -1,0 +1,25 @@
+@use '../abstracts/variables' as variable;
+
+.header-black {
+  color: variable.$color-black;
+  padding: 60px 0 0;
+  margin: 0 0 50px;
+
+  &-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0 13px;
+    text-decoration: none;
+    color: variable.$color-main;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 14px 32px;
+    background: variable.$color-orange-primary;
+  }
+}

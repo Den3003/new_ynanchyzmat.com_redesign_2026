@@ -27,7 +27,7 @@ export function buildIndexFromDOM() {
 const searchIndex = buildIndexFromDOM();
 
 export const initSearch = () => {
-
+  
   /* ===================================================================
       ПОИСК
     Простое совпадение по подстроке в заголовке и тексте (без учёта
