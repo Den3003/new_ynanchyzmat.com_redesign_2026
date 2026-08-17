@@ -97,7 +97,7 @@
     // width: 100%;
     display: grid;
     // grid-template-columns: repeat(2, 1fr);
-    grid-template-columns: minmax(585px, 750px) minmax(525px, 1fr);
+    grid-template-columns: minmax(585px, 725px) minmax(525px, 1fr);
     // gap: 0 200px;
     // justify-content: space-between;
   }
@@ -107,7 +107,7 @@
   }
 
   &__description-right {
-    max-width: 525px;
+    max-width: 550px;
 
     & p:last-child {
       margin: 0;
@@ -125,5 +125,7 @@
     font-size: 20px;
     line-height: 1.4;
     margin: 0 0 25px;
+    max-width: 550px;
+    text-align: justify;
   }
 }

@@ -7,75 +7,19 @@
   width: 100%;
   z-index: 10;
 
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(170px, 380px) minmax(785px, 1fr) minmax(330px, 380px);
+    align-items: center;
+  }
+
   &__logo-link {
     font-size: 0;
     line-height: 0;
   }
 
-  &__country {
-    font-size: 20px;
+  &__time {
+    display: none;
+    // font-size: 20px;
   }
 }
-
-// .swiper {
-//       width: 100%;
-//       height: 100%;
-//     }
-
-   /*  .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #444;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
- */
-// .main-slider {
-//   width: 100%;
-//   height: 100%;
-//   z-index: 1; /* Под всеми фиксированными элементами */
-// }
-
-// .swiper-wrapper {
-//   display: flex;
-//   width: 100vw;
-//   height: 100vh;
-// }
-
-// .swiper-slide {
-//   position: relative;
-//   overflow: hidden;
-//   /* position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-//   align-items: center;
-//   overflow: hidden; */
-// }
-
-// .superior-bg {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-size: cover;
-//   background-position: center;
-//   transform: scale(1);
-//   transition: transform 5000ms ease-out;
-// }
-
-// .superior__block {
-//   position: absolute;
-//   top: 45%;
-//   left: 50px;
-//   max-width: 650px;
-//   color: #ffffff;
-//   z-index: 2;
-//   // opacity: 0;
-//   transform: translateY(30px);
-//   transition: opacity 0.8s ease, transform 0.8s ease;
-// }

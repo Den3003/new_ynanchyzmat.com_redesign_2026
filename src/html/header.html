@@ -1,6 +1,6 @@
 <header class="header">
   <div class="container">
-    <div class="header-flex">
+    <div class="header__grid">
       <a class="header__logo-link" href="/">
         <svg class="header__logo" aria-hidden="true" width="152" height="60">
           <use href="#icon-logo"></use>
@@ -34,32 +34,75 @@
               <!-- About Us Right-Column -->
               <ul class="navigation__sub-list">
                 <li class="navigation__sub-item">
-                  <a class="navigation__sub-link" href="">Overview</a>
+                  <a class="navigation__sub-link" href="/about.html#overview">Overview</a>
                 </li>
                 <li class="navigation__sub-item">
-                  <a class="navigation__sub-link" href="">History</a>
+                  <a class="navigation__sub-link" href="/about.html#history">History</a>
                 </li>
                 <li class="navigation__sub-item">
-                  <a class="navigation__sub-link" href="">Our Approach</a>
+                  <a class="navigation__sub-link" href="/about.html#approach">Our Approach</a>
                 </li>
                 <li class="navigation__sub-item">
-                  <a class="navigation__sub-link" href="">Achievements</a>
+                  <a class="navigation__sub-link" href="/about.html#achievements">Achievements</a>
                 </li>
                 <li class="navigation__sub-item">
-                  <a class="navigation__sub-link" href="">Our clients</a>
+                  <a class="navigation__sub-link" href="/about.html#clients">Our clients</a>
                 </li>
                 <li class="navigation__sub-item">
-                  <a class="navigation__sub-link" href="">Company timeline</a>
+                  <a class="navigation__sub-link" href="/about.html#timeline">Company timeline</a>
                 </li>
               </ul>
 
             </div>
           </li>
 
-          <li class="navigation__item">
-            <a class="navigation__link" href="#">
+          <li class="navigation__item" data-menu="services">
+            <a class="navigation__link" href="/services.html" aria-haspopup="true" aria-expanded="false">
               Services
             </a>
+
+            <div class="navigation__panel" role="menu">
+
+              <!-- Services Left-Column -->
+              <div class="navigation__item-description">
+                <p class="navigation__title">
+                  What we do
+                </p>
+                <p class="navigation__text">
+                  Creating sustainable solutions for
+                  oil & gas sector that improve quality
+                  of life and meet market’s evolving needs.
+                </p>
+              </div>
+
+              <!-- Services Line-Center -->
+              <div class="navigation__line"></div>
+
+              <!-- Services Right-Column -->
+              <ul class="navigation__sub-list">
+                <li class="navigation__sub-item">
+                  <a class="navigation__sub-link" href="/services.html#dynamic">
+                    Dynamic-Static Equipment & System Maintenance
+                  </a>
+                </li>
+                <li class="navigation__sub-item">
+                  <a class="navigation__sub-link" href="/services.html#pipeline">
+                    Pipeline Services
+                  </a>
+                </li>
+                <li class="navigation__sub-item">
+                  <a class="navigation__sub-link" href="/services.html#environmental">
+                    Environment Protection
+                  </a>
+                </li>
+                <li class="navigation__sub-item">
+                  <a class="navigation__sub-link" href="/services.html#civil">
+                    Civil Construction
+                  </a>
+                </li>
+              </ul>
+
+            </div>
           </li>
           <li class="navigation__item">
             <a class="navigation__link" href="#">
@@ -84,9 +127,9 @@
         </ul>
       </nav>
 
-      <p class="header__country">
+      <p class="header__time time-zone">
         Ashagabat, Turkmenistan (GMT +5) -
-        <time class="header__time" datetime="">
+        <time class="time-zone__hour" datetime="">
           00:00
         </time>
       </p>

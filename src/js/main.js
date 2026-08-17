@@ -14,7 +14,7 @@ import {
   Navigation } from 'swiper/modules';
 import { modalController } from './modules/modal';
 import { buildIndexFromDOM, initSearch } from './modules/search';
-import { initNavigation } from './modules/navigation';
+import { initNavigation, navigationLinkActive } from './modules/navigation';
 
 tick();
 modalController({
@@ -136,6 +136,10 @@ const swiperTimeline = new Swiper('.about__timeline .swiper', {
 swiperTimeline.on('progress', (swiper, progress) => {
   console.log(swiper);
   console.log(progress);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  navigationLinkActive();
 });
 
 

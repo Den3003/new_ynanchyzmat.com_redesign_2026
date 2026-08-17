@@ -6,15 +6,15 @@ const ashgabatFormatter = new Intl.DateTimeFormat('ru-RU', {
   // hour12: false // Использовать 24-часовой формат. Поменяйте на true, если нужен AM/PM
 });
 
-const clockElement = document.querySelector('.header__time');
+const clockElement = document.querySelectorAll('.time-zone__hour');
 
 // 2. Функция, которая берет системное время юзера и «сдвигает» его отображение под Ашхабад
 export function tick(){
   const now = new Date();
-  if (clockElement) {
-    clockElement.textContent = ashgabatFormatter.format(now);
+  if (clockElement.length > 0) {
+    clockElement.forEach(elem => elem.textContent = ashgabatFormatter.format(now));
   }
 }
 
 // 4. Запускаем интервал каждую секунду
-setInterval(tick, 1000);
+setInterval(tick, 60000);

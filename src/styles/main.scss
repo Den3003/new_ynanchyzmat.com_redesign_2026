@@ -15,7 +15,6 @@
 // Папка layout ← каркас страницы
 
 @use 'layouts/header';   // Шапка сайта
-@use 'layouts/header-flex';   
 @use 'layouts/header-black';   
 @use 'layouts/footer';   
 @use 'layouts/footer-flex';   
@@ -28,16 +27,17 @@
 @use 'components/modal';  //  Модальное окно
 @use 'components/search';  //  Форма поиска по сайту
 @use 'components/swiper';  //  Стили Swiper`а
+@use 'components/time-zone';  //  Стили компонента timeZone
 
 // ── 5. Страницы ─────────────────────────────────
 // Папка pages ← стили конкретных страниц
 
 @use 'pages/main-celebration';     //  Главный блок на главной странице
 @use 'pages/main-analyzers';     //  Блок об анализаторах на главной странице 
-@use 'pages/main-pollution';     //  Блок pollution на главной странице 
+@use 'pages/main-laboratory';     //  Блок laboratory на главной странице 
 @use 'pages/main-h2s';     //  Блок h2s на главной странице 
-@use 'pages/main-extinguisher';     //  Блок extinguisher на главной странице 
 @use 'pages/about';     //  Страница About Us 
+@use 'pages/services';     //  Страница Services 
 @use 'pages/methodology';     //  Страница Methodology
 @use 'pages/philosophy';     //  Страница Philosophy
 @use 'pages/culture';     //  Страница Culture
