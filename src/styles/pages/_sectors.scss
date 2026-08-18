@@ -1,0 +1,142 @@
+@use '../abstracts/variables' as variable;
+
+.sectors {
+  
+  &__hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    // height: 100%;
+    margin: 0 0 120px;
+  }
+
+  &__container {
+    height: 100%;
+  }
+
+  &__hero-background {
+    position: absolute;
+    inset: 0;
+    // height: 100%;
+  }
+
+  &__hero-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__hero-flex {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 0 0 40px;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 5px;
+  }
+
+  &__hero-text {
+    font-size: 20px;
+    margin: 0;
+  }
+
+
+  // Секция Overview
+
+  &__overview {
+    margin: 0 0 80px;
+  }
+
+  &__overview-title {
+    font-size: 36px;
+    font-weight: 500;
+    color: variable.$color-black;
+    margin: 0 0 10px;
+  }
+
+  &__overview-text-wrapper {
+    display: grid;
+    gap: 0 40px;
+    grid-template-columns: minmax(700px, 930px) minmax(600px, 1fr);
+    margin: 0 0 60px;
+  }
+
+  &__overview-text {
+    font-size: 20px;
+    color: variable.$color-black;
+    margin: 0;
+  }
+
+  &__overview-text_big-width {
+    max-width: 800px;
+  }
+
+  &__overview-text_small-width {
+    max-width: 700px;
+  }
+
+  &__overview-list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__overview-item {
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      .sectors__overview-item-hover {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__overview-item-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__overview-item-title {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    z-index: 10;
+  }
+
+  &__overview-item-hover {
+    position: absolute;
+    inset: 0;
+    background: variable.$color-black;
+    transform: translateY(100%);
+    transition: transform .8s cubic-bezier(.55, 0, .1, 1);
+    padding: 30px;
+    display: flex;
+    align-items: end;
+  }
+
+  &__overview-item-text {
+    margin: 0;
+  }
+
+  &__overview-text-oil {
+    max-width: 350px;
+  }
+}
