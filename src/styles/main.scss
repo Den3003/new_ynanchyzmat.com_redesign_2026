@@ -28,6 +28,8 @@
 @use 'components/search';  //  Форма поиска по сайту
 @use 'components/swiper';  //  Стили Swiper`а
 @use 'components/time-zone';  //  Стили компонента timeZone
+@use 'components/risk-section';  //  Стили компонента risk-section
+@use 'components/contacts-form';  //  Стили компонента contacts-form (форма отправки контактов на странице Contact Us)
 
 // ── 5. Страницы ─────────────────────────────────
 // Папка pages ← стили конкретных страниц
@@ -39,6 +41,10 @@
 @use 'pages/about';     //  Страница About Us 
 @use 'pages/services';     //  Страница Services 
 @use 'pages/sectors';     //  Страница Sectors 
+@use 'pages/safety';     //  Страница Safety & Compliance 
 @use 'pages/methodology';     //  Страница Methodology
 @use 'pages/philosophy';     //  Страница Philosophy
 @use 'pages/culture';     //  Страница Culture
+@use 'pages/team';     //  Страница Our team
+@use 'pages/subsafety';     //  Страница Sub-Safety
+@use 'pages/contacts';     //  Страница Contact Us

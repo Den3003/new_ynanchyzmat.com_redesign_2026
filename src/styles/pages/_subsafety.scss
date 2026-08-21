@@ -1,0 +1,220 @@
+@use '../abstracts/variables' as variable;
+
+.sub-safety {
+  color: variable.$color-black;
+
+  &__wrapper-grid {
+    position: relative;
+  }
+  
+  &__line {
+    border-top: 1px solid variable.$color-black;
+    margin: 0 0 40px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 0 10px;
+    text-decoration: none;
+    color: variable.$color-main;
+    background: variable.$color-orange-primary;
+    font-size: 20px;
+    padding: 12px 22px;
+    margin: 0 0 65px;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+    position: absolute;
+    top: 38%;
+    left: 33%;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0 0 100px;
+    list-style: none;
+
+    display: grid;
+    grid-template-areas: 
+      "risk hse hse"
+      "training culture leadership";
+  }
+
+  &__item {
+    width: 600px;
+    height: 470px;
+    // display: flex;
+
+    &:hover {
+      .sub-safety__item-text {
+        color: variable.$color-black;
+      }
+
+      .sub-safety__item-arrow {
+        color: variable.$color-orange-primary;
+      }
+    }
+  }
+
+  &__item-text {
+    margin: 0;
+    display: flex;
+    gap: 0 3px;
+    color: variable.$color-gray-safety-description-hidden;
+    transition: color 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  &__item-arrow {
+    color: variable.$color-gray-arrow-sub-safety;
+    transition: color .4s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  // Карточка risk
+
+  &__item-risk {
+    grid-area: risk;
+    position: relative;
+  }
+
+  &__item-text-risk {
+    max-width: 295px;
+  }
+
+  &__item-wrapper-image-risk {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__item-arrow-risk {
+    position: absolute;
+    bottom: 20px;
+    left: 125px;
+  }
+
+  // Карточка training
+
+  &__item-training {
+    grid-area: training;
+    position: relative;
+    width: 690px;
+    height: 375px;
+    display: flex;
+    align-items: end;
+  }
+
+  &__item-text-training {
+    max-width: 360px;
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
+  }
+
+  &__item-wrapper-image-training {
+    position: absolute;
+    top: 0;
+    right: 200px;
+  }
+
+  &__item-arrow-training {
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+  }
+
+
+
+
+
+  // Карточка culture
+
+
+  &__item-culture {
+    grid-area: culture;
+    position: relative;
+    height: 480px;
+    display: flex;
+    align-items: end;
+  }
+
+  &__item-text-culture {
+    max-width: 375px;
+  }
+
+  &__item-wrapper-image-culture {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__item-arrow-culture {
+    position: absolute;
+    top: 45%;
+    right: 0;
+  }
+
+
+
+
+
+  // Карточка leadership
+
+  &__item-leadership {
+    grid-area: leadership;
+    width: 400px;
+    height: 395px;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
+
+  &__item-text-leadership {
+    max-width: 295px;
+  }
+
+  &__item-wrapper-image-leadership {
+    position: absolute;
+    left: -85px;
+    top: 0;
+  }
+
+  &__item-arrow-leadership {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+  }
+
+
+
+
+
+
+  // Карточка hse
+
+  &__item-hse {
+    grid-area: hse;
+    width: 400px;
+    position: relative;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__item-wrapper-image-hse {
+    position: absolute;
+    left: -255px;
+    top: 0;
+  }
+
+  &__item-text-hse {
+    max-width: 370px;
+  }
+
+}

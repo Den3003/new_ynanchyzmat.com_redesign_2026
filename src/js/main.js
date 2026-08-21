@@ -2,6 +2,7 @@ import 'modern-normalize';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
+import 'swiper/css/parallax';
 import '../styles/main.scss';
 import { tick } from './modules/timeZone';
 import 'virtual:svg-icons-register';
@@ -11,10 +12,13 @@ import {
   Autoplay, 
   EffectFade, 
   Mousewheel, 
-  Navigation } from 'swiper/modules';
+  Navigation,
+  Parallax,
+} from 'swiper/modules';
 import { modalController } from './modules/modal';
 import { buildIndexFromDOM, initSearch } from './modules/search';
 import { initNavigation, navigationLinkActive } from './modules/navigation';
+import { initRiskTimeline } from './modules/riskSection';
 
 tick();
 modalController({
@@ -29,6 +33,8 @@ console.log('searchIndex: ', searchIndex);
 
 initSearch();
 initNavigation();
+initRiskTimeline();
+
 
 // Слайдер Главной страницы на весь экран
 
@@ -140,6 +146,78 @@ swiperTimeline.on('progress', (swiper, progress) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   navigationLinkActive();
+});
+
+
+//  Слайдер страницы Safety в секции At Ynanch Hyzmat
+
+const swiperSafetyDescription = new Swiper('.safety__description .swiper', {
+  modules: [EffectFade, Mousewheel],
+  allowTouchMove: true,
+  direction:'vertical',
+  loop: true,
+  // effect: 'fade',
+  /* fadeEffect: {
+    crossFade: true // Фоны будут плавно растворяться друг в друге, а не моргать
+  }, */
+  mousewheel: { // Включаем и настраиваем управление колесом мыши
+    sensitivity: 1, // Чувствительность скролла (1 — стандарт)
+    thresholdDelta: 15, // Минимальный порог прокрутки, чтобы избежать случайных «двойных» переключений
+  },
+  slidesPerView: 3,
+  // centeredSlides: true,
+  spaceBetween: 20,
+
+  on: {
+    slideChange(s) {
+      const images = document.querySelectorAll('.safety__description-image');
+      images.forEach(img => {
+        if (+img.dataset.index === s.realIndex) {
+          img.classList.add('safety__description-image_active');
+        } else {
+          img.classList.remove('safety__description-image_active');
+        }
+      });
+    }
+  }
+});
+
+
+//  Слайдер страницы Safety в секции Certificates
+
+const swiperCertificates = new Swiper('.safety__certificates .swiper', {
+  modules: [Navigation],
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  spaceBetween: 30,
+
+  navigation: {
+    nextEl: '.safety__certificates-button-next',
+    prevEl: '.safety__certificates-button-prev',
+  },
+
+});
+
+
+//  Слайдер страницы Our team
+
+const swiperTeam = new Swiper('.team .swiper', {
+  modules: [Parallax, Navigation],
+  speed: 600,
+  parallax: true,
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  spaceBetween: 140,
+
+  // effect: 'creative',
+  /* fadeEffect: {
+    crossFade: true // Фоны будут плавно растворяться друг в друге, а не моргать
+  }, */
+
+  navigation: {
+    nextEl: '.team__swiper-button-next',
+    prevEl: '.team__swiper-button-prev',
+  },
 });
 
 

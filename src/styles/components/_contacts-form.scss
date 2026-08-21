@@ -1,0 +1,38 @@
+@use '../abstracts/variables' as variable;
+
+.contacts-form {
+  background: variable.$color-black-contacts-form-bg;
+  padding: 30px 40px 40px;
+  width: 770px;
+  display: flex;
+  flex-direction: column;
+  // gap: 20px 0;
+
+  &__label {
+    margin: 0 0 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid variable.$color-orange-primary;
+    margin: 0 0 20px;
+    // width: 690px;
+  }
+
+  &__textarea {
+    margin: 0 0 20px;
+  }
+
+  &__button {
+    height: 51px;
+    background: variable.$color-orange-primary;
+    border: none;
+    cursor: pointer;
+    color: variable.$color-main;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}

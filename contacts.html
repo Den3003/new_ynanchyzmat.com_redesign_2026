@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preload" href="/fonts/Futura-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Futura-500.woff2" as="font" type="font/woff2" crossorigin>
+  <title>Contact Us | Ynanch Hyzmat</title>
+</head>
+<body>
+  <load src="/src/html/header.html" />
+  
+  <main>
+    <section class="contacts">
+      <img class="contacts__image" src="/src/assets/images/contacts/contacts.jpg" alt="">
+      <div class="container contacts__container">
+        <form class="contacts__form contacts-form" action="">
+
+          <!-- Name -->
+          <label for="name" class="contacts-form__label">
+            Name
+          </label>
+          <input
+            class="contacts-form__input"
+            id="name"
+            type="text"
+          >
+
+          <!-- Organization -->
+          <label for="organization" class="contacts-form__label">
+            Organization
+          </label>
+          <input
+            class="contacts-form__input"
+            id="organization"
+            type="text"
+          >
+
+          <!-- Phone number -->
+          <label for="phone" class="contacts-form__label">
+            Phone number
+          </label>
+          <input
+            class="contacts-form__input"
+            id="phone"
+            type="tel"
+          >
+
+          <!-- Email -->
+          <label for="mail" class="contacts-form__label">
+            Email
+          </label>
+          <input
+            class="contacts-form__input"
+            id="mail"
+            type="email"
+          >
+
+          <!-- Subject and Message -->
+          <label for="textarea" class="contacts-form__label">
+            Subject and Message
+          </label>
+          <textarea
+            class="contacts-form__textarea"
+            id="textarea"
+            rows="8"
+            name=""
+          >
+          </textarea>
+
+          <button class="contacts-form__button" type="submit">Submit</button>
+
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <load src="/src/html/footer.html" />
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

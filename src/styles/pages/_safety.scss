@@ -1,0 +1,286 @@
+@use '../abstracts/variables' as variable;
+
+.safety-body {
+  position: relative;
+}
+
+.safety {
+  background-color: variable.$color-main;
+  //  Секция Hero
+
+  &__hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    // height: 100%;
+    margin: 0 0 120px;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: end;
+  }
+
+  &__hero-background {
+    position: absolute;
+    inset: 0;
+    // height: 100%;
+  }
+
+  &__hero-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__hero-content {
+    position: relative;
+    z-index: 11;
+    padding: 5px 20px 10px 20px;
+    width: 990px;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0 0 30px;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 5px;
+    
+  }
+
+  &__hero-text {
+    font-size: 20px;
+    margin: 0;
+    max-width: 950px;
+  }
+
+  // Секция Overview
+
+  &__overview {
+    margin: 0 0 155px;
+  }
+
+  &__overview-wrapper {
+    color: variable.$color-black;
+  }
+
+  &__overview-title {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 30px;
+  }
+
+  &__overview-text {
+    font-size: 20px;
+    max-width: 600px;
+
+    &:not(:last-child) {
+      margin: 0 0 25px;
+    }
+  }
+
+  &__overview-link {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    text-decoration: none;
+    color: variable.$color-main;
+    background: variable.$color-orange-primary;
+    font-size: 20px;
+    padding: 12px 22px;
+    max-width: max-content;
+  }  
+
+  &__overview-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(550px, 600px);
+    justify-content: space-between;
+  }
+
+
+  // Секция Description
+
+
+  &__description {
+    color: variable.$color-black;
+    padding: 0 0 120px;
+  }
+
+  &__description-title {
+    font-size: 64px;
+    font-weight: 500;
+    margin: 0 0 30px;
+  }
+
+  &__description-text-wrapper {
+    margin: 0 0 120px;
+  }
+
+  &__description-text {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  &__description-swiper {
+    height: 450px;
+    display: grid;
+    grid-template-columns: 700px 1fr;
+  }
+
+  &__description-image-wrapper {
+    position: relative;
+    width: 323px;
+    height: 435px;
+  }
+
+  &__description-image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+    // animation: fadeIn 0.3s ease forwards;
+
+    &_active {
+      opacity: 1;
+    }
+  }
+
+  &__description-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__description-item {
+    display: grid;
+    grid-template-columns: 150px 700px;
+    // height: auto;
+    gap: 0 135px;
+    color: variable.$color-gray-safety-description-hidden;
+    align-items: center;
+    // justify-content: end;
+
+    &.swiper-slide-active {
+      .safety__description-item-span {
+        font-size: 128px;
+      }
+
+      .safety__description-item-title {
+        font-size: 48px;
+      }
+
+      & {
+        color: variable.$color-black;
+      }
+    }
+
+    &.swiper-slide-next {
+      .safety__description-item-span {
+        font-size: 118px;
+      }
+
+      .safety__description-item-title {
+        font-size: 42px;
+      }
+    }
+  }
+
+  &__description-item-span {
+    font-size: 98px;
+    font-weight: 500;
+    justify-self: end;
+    transition: all .3s ease;
+  }
+
+  &__description-item-title {
+    font-size: 40px;
+    font-weight: 500;
+    justify-self: center;
+    margin: 0;
+    transition: all .3s ease;
+  }
+
+
+  // Секция Certificates
+
+  &__certificates {
+    padding: 60px 0 300px;
+    background: variable.$color-about-gray-bg;
+  }
+
+  &__certificates-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 75px 0;
+  }
+
+  &__certificates-title {
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__certificates-swiper-wrapper-with-control {
+    display: flex;
+    align-items: center;
+    gap: 0 50px;
+  }
+
+  &__certificates-swiper-wrapper {
+    align-items: center;
+    height: 700px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__certificates-button {
+    all: unset;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+
+  &__certificates-slider-item {
+    // position: relative;
+    width: 300px;
+    height: 435px;
+    transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+
+    &.swiper-slide-active {
+      transform: scale(1.20);
+      position: relative;
+      z-index: 10;
+    }
+
+    &.swiper-slide-next,
+    &.swiper-slide-prev {
+      transform: scale(1.10);
+    }
+  }
+
+  &__certificates-image {
+    // position: absolute;
+    // inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+}
+
+
