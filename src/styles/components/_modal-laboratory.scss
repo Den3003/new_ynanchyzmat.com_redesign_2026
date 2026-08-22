@@ -1,0 +1,84 @@
+@use '../abstracts/variables' as variable;
+
+.modal-laboratory {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: variable.$color-black-modal-bg;
+  inset: 0;
+  z-index: 1;
+  display: none;
+
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 30px;
+  }
+
+  &__sub-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 30px;
+  }
+
+  &__text {
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.4;
+    margin: 0;
+
+    &:not(:last-child) {
+      margin: 0 0 30px;
+    }
+
+    &_dot:before {
+      content: "•";
+      color: variable.$color-main; 
+      font-weight: bold;
+    }
+  }
+
+  &__content {
+    // height: 505px;
+    display: grid;
+    grid-template-columns: minmax(540px, 690px) 1fr;
+    margin: 0 0 50px;
+  }
+
+  &__content-left {
+    max-width: 550px;
+  }
+
+  &__content-right {
+    max-width: 570px;
+  }
+
+  &__close {
+    align-self: self-start;
+    width: 255px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: variable.$color-main;
+    border: none;
+    cursor: pointer;
+  }
+
+
+}

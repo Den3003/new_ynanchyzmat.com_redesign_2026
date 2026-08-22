@@ -28,6 +28,20 @@ modalController({
   blockVisible: '.main-celebration__block',
 });
 
+modalController({
+  modal: '.modal-h2s',
+  btnOpen: '.main-h2s__button',
+  btnClose: '.modal-h2s__close',
+  blockVisible: '.main-h2s__block',
+});
+
+modalController({
+  modal: '.modal-laboratory',
+  btnOpen: '.main-laboratory__button',
+  btnClose: '.modal-laboratory__close',
+  blockVisible: '.main-laboratory__block',
+});
+
 const searchIndex = buildIndexFromDOM();
 console.log('searchIndex: ', searchIndex);
 
