@@ -75,7 +75,7 @@ export const swiper = new Swiper('.main-swiper.swiper', {
 
       // Ищем внутреннюю оранжевую линию для текущего активного слайда (по realIndex)
       const activeLine = document.querySelector(
-        `.swiper__progress-item[data-index="${s.realIndex}"] .swiper__progress-fill`
+        `.main-swiper__progress-item[data-index="${s.realIndex}"] .main-swiper__progress-fill`
       );
       if (activeLine) {
         activeLine.style.transform = `scaleX(${progress})`;
@@ -84,7 +84,7 @@ export const swiper = new Swiper('.main-swiper.swiper', {
       // console.log('time: ', time);
     },
     slideChange(s) {
-      const allLines = document.querySelectorAll('.swiper__progress-fill');
+      const allLines = document.querySelectorAll('.main-swiper__progress-fill');
 
       allLines.forEach((fill, index) => {
         if (index !== s.realIndex) {
