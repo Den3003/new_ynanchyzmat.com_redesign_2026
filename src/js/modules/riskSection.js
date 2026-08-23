@@ -9,9 +9,10 @@ export function initRiskTimeline() {
   const items = Array.from(section.querySelectorAll('.js-risk-item'));
 
   let progress = 0; // 0 = на 1-й точке, 1 = на 4-й точке
-  const speed = 0.0015;
+  const speed = 0.0005;
 
   function renderUI(currentProgress) {
+    console.log('currentProgress: ', currentProgress);
     const dots = items.map(item => item.querySelector('.js-risk-dot'));
     if (!dots[0] || !dots[dots.length - 1]) {
       return;
@@ -23,7 +24,10 @@ export function initRiskTimeline() {
     const lastDotY = lastItem.offsetTop + dots[dots.length - 1].offsetTop + (dots[dots.length - 1].offsetHeight / 2);
 
     // Длина оранжевой линии от первой точки до текущего прогресса
+    // console.log('firstDotY: ', firstDotY);
+    // console.log('lastDotY: ', lastDotY);
     const currentLineHeight = firstDotY + (currentProgress * (lastDotY - firstDotY));
+    // console.log('currentLineHeight: ', currentLineHeight);
     progressLine.style.height = `${currentLineHeight}px`;
 
     // Проверяем каждую точку
@@ -49,6 +53,7 @@ export function initRiskTimeline() {
   section.addEventListener('wheel', (e) => {
     const isScrollingDown = e.deltaY > 0;
     const isScrollingUp = e.deltaY < 0;
+    // console.log('isScrollingDown: ', isScrollingDown);
 
     const shouldTrapScroll = (isScrollingDown && progress < 1) || (isScrollingUp && progress > 0);
 
@@ -56,6 +61,7 @@ export function initRiskTimeline() {
       e.preventDefault(); // Блокируем скролл страницы
 
       progress += e.deltaY * speed;
+      // console.log('progress: ', progress);
       progress = Math.max(0, Math.min(1, progress)); // Ограничиваем от 0 до 1
 
       renderUI(progress);

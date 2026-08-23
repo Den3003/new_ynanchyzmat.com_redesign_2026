@@ -60,9 +60,9 @@
   z-index: 3;
 
 
-  /* &:last-child {
+  &:last-child {
     margin-bottom: 0;
-  } */
+  }
 
   // --- ЦЕНТРАЛЬНАЯ ТОЧКА (ВСЕГДА ВИДНА) ---
   &__center {
@@ -168,16 +168,16 @@
   }
 
   &__card-near {
-    padding: 49px 40px;
+    padding: 54px 40px;
   }
 
   &__card-incident,
   &__card-major {
-    padding: 30px 40px;
+    padding: 35px 40px;
   }
 
   &__card-lesson {
-    padding: 41px 40px;
+    padding: 47px 40px;
   }
 
   &__text {

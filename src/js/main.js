@@ -203,7 +203,8 @@ const swiperCertificates = new Swiper('.safety__certificates .swiper', {
   modules: [Navigation],
   slidesPerView: 'auto',
   centeredSlides: true,
-  spaceBetween: 30,
+  spaceBetween: -10,
+  initialSlide: 2,
 
   navigation: {
     nextEl: '.safety__certificates-button-next',
