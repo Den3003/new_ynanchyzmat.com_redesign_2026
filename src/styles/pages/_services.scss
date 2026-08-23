@@ -1,5 +1,9 @@
 @use '../abstracts/variables' as variable;
 
+.services-body {
+  background: variable.$color-gray-services-bg;
+}
+
 .services {
   // Секция hero
 
@@ -48,7 +52,8 @@
   // Секция description
 
   &__description {
-    padding: 80px 0 60px;
+    padding: 80px 0 70px;
+    // background: variable.$color-gray-services-bg;
   }
 
   &__description-grid {
@@ -101,7 +106,7 @@
 
   &__description-point {
     position: relative;
-    background: variable.$color-black-services-card-bg;
+    background: variable.$color-about-gray-bg;
     border-radius: 20px;
     padding: 80px 30px 30px;
     display: flex;
@@ -135,16 +140,8 @@
     color: white; /* Белый цвет */
   }
 
-  &__description-list-dynamic {
-    max-width: 535px;
-  }
-
   &__description-list-fire {
     max-width: 470px;
-  }
-
-  &__description-list-programming {
-    max-width: 535px;
   }
 
   &__description-item {
