@@ -63,25 +63,10 @@
     margin: 0 0 10px;
   }
 
-  &__overview-text-wrapper {
-    display: grid;
-    gap: 0 40px;
-    grid-template-columns: minmax(700px, 930px) minmax(600px, 1fr);
-    margin: 0 0 60px;
-  }
-
   &__overview-text {
     font-size: 20px;
     color: variable.$color-black;
-    margin: 0;
-  }
-
-  &__overview-text_big-width {
-    max-width: 800px;
-  }
-
-  &__overview-text_small-width {
-    max-width: 700px;
+    margin: 0 0 40px;
   }
 
   &__overview-list {
