@@ -110,7 +110,7 @@ document.querySelectorAll('.swiper__progress-item').forEach(track => {
 
 const swiperAchievements = new Swiper('.about__achievements .swiper', {
   modules: [Navigation],
-  slidesPerView: 'auto',
+  slidesPerView: 5,
   centeredSlides: true,
   spaceBetween: 60,
 
@@ -125,7 +125,7 @@ const swiperAchievements = new Swiper('.about__achievements .swiper', {
 
 const swiperAboutClient = new Swiper('.about__clients .swiper', {
   modules: [Navigation],
-  slidesPerView: 'auto',
+  slidesPerView: 5,
   centeredSlides: true,
   spaceBetween: 60,
 

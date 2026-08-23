@@ -6,8 +6,8 @@
 
   &__sub-title {
     color: variable.$color-black;
-    font-size: 36px;
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 700;
     margin: 0 0 20px;
   }
 
@@ -40,6 +40,7 @@
 
   &__text {
     font-size: 20px;
+    line-height: 1.2;
     max-width: 800px;
     margin: 0 0 80px;
   }
@@ -64,8 +65,8 @@
 
   &__purpose-title {
     color: variable.$color-black;
-    font-size: 36px;
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 700;
     margin: 0 0 10px;
   }
 
@@ -135,7 +136,7 @@
 
   &__history-wrapper-text {
     color: variable.$color-black;
-    max-width: 660px;
+    max-width: 800px;
   }
 
   &__history-text {
@@ -148,18 +149,6 @@
     }
   }
 
-  &__history-figure {
-    position: relative;
-    margin: 0;
-
-    &:after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55.44%, rgba(0, 0, 0, 0.5) 100%);
-    }
-  }
-
   &__history-image {
     display: block;
     width: 100%;
@@ -168,20 +157,6 @@
     object-position: center;
   }
 
-  &__history-figcaption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 30px;
-    text-align: center;
-    max-width: 635px;
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0 auto;
-    z-index: 1;
-    // backdrop-filter: blur(5px);
-    // background-color: rgba(0, 0, 0, 0.1);
-  }
 
 
   // Секция approach
@@ -259,15 +234,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 160px 0;
+    gap: 155px 0;
   }
 
   &__achievements-text {
     font-size: 20px;
     line-height: 1.4;
-    text-align: center;
-    max-width: 660px;
+    // text-align: center;
+    // max-width: 660px;
     margin: 0;
+  }
+
+  &__achievements-equipment-image {
+    margin: 0 0 10px;
   }
 
   //  Swiper
@@ -276,11 +255,11 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 275px;
+    height: 380px;
   }
 
   &__achievements-swiper-wrapper {
-    max-width: 915px;
+    max-width: 1030px;
   }
 
   &__achievements-sliders-wrapper {
@@ -302,8 +281,14 @@
     gap: 10px 0;
     transition: transform 0.3s ease;
 
+    &.swiper-slide-prev, 
+    &.swiper-slide-next {
+      transform: scale(1.10) translateY(-10px);
+    }
+
     &.swiper-slide-active {
-      transform: scale(1.30); // чуть крупнее, можно подкрутить 1.05–1.15
+      transform: scale(1.50) translateY(-20px); // чуть крупнее, можно подкрутить 1.05–1.15
+      // transform: translateY(-10px);
       // z-index: 2;
       // opacity: 1;
 
@@ -314,10 +299,19 @@
     }
   }
 
+  &__achievements-slider-item-equipment {
+    min-width: 165px;
+    gap: 0;
+  }
+
   &__achievements-slide-title {
     font-size: 18px;
     margin: 0;
     text-align: center;
+  }
+
+  &__achievements-slide-title-equipment {
+    margin: 0 0 3px;
   }
 
   &__achievements-projects-title {
@@ -345,11 +339,8 @@
   }
 
   &__achievements-button {
-    // height: 50px;
     all: unset;
     cursor: pointer;
-    width: 55px;
-    // height: 100px;
   }
 
 
@@ -390,7 +381,7 @@
   }
 
   &__clients-swiper-wrapper {
-    max-width: 915px;
+    max-width: 1000px;
   }
 
   &__clients-sliders-wrapper {
@@ -412,8 +403,13 @@
     // gap: 10px 0;
     transition: transform 0.3s ease;
 
+    &.swiper-slide-prev, 
+    &.swiper-slide-next {
+      transform: scale(1.10) translateY(-10px);
+    }
+
     &.swiper-slide-active {
-      transform: scale(1.50); // чуть крупнее, можно подкрутить 1.05–1.15
+      transform: scale(1.50) translateY(-20px); // чуть крупнее, можно подкрутить 1.05–1.15
       // z-index: 2;
       // opacity: 1;
 
@@ -432,7 +428,6 @@
   &__clients-button {
     all: unset;
     cursor: pointer;
-    width: 55px;
   }
 
   // Секция Company Timeline
@@ -444,9 +439,9 @@
 
   &__timeline-title {
     color: variable.$color-black;
-    font-size: 36px;
-    font-weight: 500;
-    margin: 0 0 10px;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 0 5px;
   }
 
   &__timeline-line {
@@ -480,6 +475,7 @@
   &__timeline-swiper-buttons-control {
     display: flex;
     flex-direction: column;
+    align-items: start;
     // flex: 0 0 auto;
     gap: 50px 0;
     // flex:1 1 auto;
@@ -490,7 +486,6 @@
   &__timeline-button {
     all: unset;
     cursor: pointer;
-    width: 100px;
     // transform: rotate(90deg);
   }
 
