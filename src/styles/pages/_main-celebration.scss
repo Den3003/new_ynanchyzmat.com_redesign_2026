@@ -36,6 +36,10 @@
     margin: 0 0 30px;
   }
 
+  &__arrow {
+    transition: transform .6s cubic-bezier(.55, 0, .1, 1);
+  }
+
   &__button {
     width: 309px;
     height: 51px;
@@ -51,5 +55,11 @@
     font-weight: 500;
     color: variable.$color-orange-primary;
     cursor: pointer;
+
+    &:hover {
+      .main-celebration__arrow {
+        transform: translateX(10px);
+      }
+    }
   }
 }

@@ -45,6 +45,10 @@
     margin: 0;
   }
 
+  &__button-icon {
+    transition: transform .6s cubic-bezier(.55, 0, .1, 1);
+  }
+
   &__button {
     text-decoration: none;
     background: variable.$color-orange-primary;
@@ -56,6 +60,12 @@
     align-items: center;
     justify-content: center;
     gap: 0 13px;
+
+    &:hover {
+      .methodology__button-icon {
+        transform: translateX(-5px);
+      }
+    }
   }
 
   &__image-wrapper {

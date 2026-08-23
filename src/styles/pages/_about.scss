@@ -205,6 +205,10 @@
     margin: 0;
   }
 
+  &__approach-content-link-arrow {
+    transition: transform .6s cubic-bezier(.55, 0, .1, 1);
+  }
+
   &__approach-content-link {
     display: flex;
     gap: 0 10px;
@@ -213,6 +217,12 @@
     background: variable.$color-orange-primary;
     font-size: 20px;
     padding: 12px 22px;
+
+    &:hover {
+      .about__approach-content-link-arrow {
+        transform: translateX(10px);
+      }
+    }
   }
 
 

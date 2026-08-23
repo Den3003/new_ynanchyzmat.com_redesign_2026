@@ -12,6 +12,10 @@
     margin: 0 0 40px;
   }
 
+  &__link-arrow {
+    transition: transform .6s cubic-bezier(.55, 0, .1, 1);
+  }
+
   &__link {
     display: flex;
     align-items: center;
@@ -23,6 +27,12 @@
     font-size: 20px;
     padding: 12px 22px;
     margin: 0 0 65px;
+
+    &:hover {
+      .sub-safety__link-arrow {
+        transform: translateX(-5px);
+      }
+    }
   }
 
   &__title {

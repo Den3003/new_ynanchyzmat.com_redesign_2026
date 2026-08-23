@@ -85,6 +85,10 @@
     }
   }
 
+  &__overview-link-arrow {
+    transition: transform .6s cubic-bezier(.55, 0, .1, 1);
+  }
+
   &__overview-link {
     display: flex;
     align-items: center;
@@ -93,8 +97,14 @@
     color: variable.$color-main;
     background: variable.$color-orange-primary;
     font-size: 20px;
-    padding: 12px 22px;
+    padding: 14px 29px;
     max-width: max-content;
+
+    &:hover {
+      .safety__overview-link-arrow {
+        transform: translateX(5px);
+      }
+    }
   }  
 
   &__overview-grid {
