@@ -44,6 +44,14 @@
     padding: 0;
   }
 
+  &__swiper-button-prev.swiper-button-disabled,
+  &__swiper-button-next.swiper-button-disabled {
+    opacity: 0;
+    pointer-events: none;
+    cursor: default;
+    transition: opacity 0.3s ease;
+  }
+
   &__item-title {
     font-size: 48px;
     font-weight: 500;

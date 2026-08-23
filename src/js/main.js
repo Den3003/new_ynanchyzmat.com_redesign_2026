@@ -113,6 +113,7 @@ const swiperAchievements = new Swiper('.about__achievements .swiper', {
   slidesPerView: 5,
   centeredSlides: true,
   spaceBetween: 60,
+  initialSlide: 2,
 
   navigation: {
     nextEl: '.about__achievements-button-next',
@@ -128,6 +129,7 @@ const swiperAboutClient = new Swiper('.about__clients .swiper', {
   slidesPerView: 5,
   centeredSlides: true,
   spaceBetween: 60,
+  initialSlide: 2,
 
   navigation: {
     nextEl: '.about__clients-button-next',
@@ -144,6 +146,7 @@ const swiperTimeline = new Swiper('.about__timeline .swiper', {
   slidesPerView: 'auto',
   centeredSlides: true,
   spaceBetween: 30,
+  initialSlide: 1,
 
   navigation: {
     nextEl: '.about__timeline-button-next',
@@ -218,7 +221,7 @@ const swiperCertificates = new Swiper('.safety__certificates .swiper', {
 
 const swiperTeam = new Swiper('.team .swiper', {
   modules: [Parallax, Navigation],
-  speed: 600,
+  speed: 900,
   parallax: true,
   slidesPerView: 'auto',
   centeredSlides: true,
