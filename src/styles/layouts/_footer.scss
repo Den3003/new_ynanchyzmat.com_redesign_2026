@@ -7,12 +7,32 @@
   width: 100%;
   z-index: 10;
   padding: 30px 0 45px;
+  
+
+  &_contacts {
+    position: static;
+    padding: 25px 0;
+    border-top: 3px solid variable.$color-orange-primary;
+    background: rgba(0, 0, 0, 0.7);
+
+    .footer__contacts {
+      display: flex;
+    }
+
+    .footer__address {
+      display: flex;
+    }
+
+    .footer__time {
+      display: none;
+    }
+  }
 
   &.footer_black {
     color: variable.$color-black;
     position: static;
     // margin: 0 0 80px;
-    padding: 00 0 80px;
+    padding: 0 0 80px;
   }
 
   &.footer_sectors {
@@ -39,9 +59,10 @@
   }
 
   &__contacts {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0 20px;
+
   }
 
   &__contacts-links {
@@ -60,13 +81,13 @@
   }
 
   &__address {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0 10px;
   }
 
   &__address-text {
-    max-width: 310px;
+    // max-width: 310px;
     margin: 0;
   }
 

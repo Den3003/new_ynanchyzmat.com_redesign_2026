@@ -7,75 +7,82 @@
   <link rel="preload" href="/fonts/Futura-500.woff2" as="font" type="font/woff2" crossorigin>
   <title>Contact Us | Ynanch Hyzmat</title>
 </head>
-<body>
-  <load src="/src/html/header.html" />
-  
-  <main>
-    <section class="contacts">
-      <img class="contacts__image" src="/src/assets/images/contacts/contacts.jpg" alt="">
-      <div class="container contacts__container">
-        <form class="contacts__form contacts-form" action="">
+<body class="contacts-body">
 
-          <!-- Name -->
-          <label for="name" class="contacts-form__label">
-            Name
-          </label>
-          <input
-            class="contacts-form__input"
-            id="name"
-            type="text"
-          >
+  <div class="contacts-wrapper">
+    <load src="/src/html/header.html" theme="header_contacts"/>
+    
+    <main>
+      <section class="contacts">
+        <h1>
 
-          <!-- Organization -->
-          <label for="organization" class="contacts-form__label">
-            Organization
-          </label>
-          <input
-            class="contacts-form__input"
-            id="organization"
-            type="text"
-          >
 
-          <!-- Phone number -->
-          <label for="phone" class="contacts-form__label">
-            Phone number
-          </label>
-          <input
-            class="contacts-form__input"
-            id="phone"
-            type="tel"
-          >
+        </h1>
+        <!-- <img class="contacts__image" src="/src/assets/images/contacts/contacts.jpg" alt=""> -->
+        <div class="container contacts__container">
+          <form class="contacts__form contacts-form" action="">
 
-          <!-- Email -->
-          <label for="mail" class="contacts-form__label">
-            Email
-          </label>
-          <input
-            class="contacts-form__input"
-            id="mail"
-            type="email"
-          >
+            <!-- Name -->
+            <label for="name" class="contacts-form__label">
+              Name
+            </label>
+            <input
+              class="contacts-form__input"
+              id="name"
+              type="text"
+            >
 
-          <!-- Subject and Message -->
-          <label for="textarea" class="contacts-form__label">
-            Subject and Message
-          </label>
-          <textarea
-            class="contacts-form__textarea"
-            id="textarea"
-            rows="8"
-            name=""
-          >
-          </textarea>
+            <!-- Organization -->
+            <label for="organization" class="contacts-form__label">
+              Organization
+            </label>
+            <input
+              class="contacts-form__input"
+              id="organization"
+              type="text"
+            >
 
-          <button class="contacts-form__button" type="submit">Submit</button>
+            <!-- Phone number -->
+            <label for="phone" class="contacts-form__label">
+              Phone number
+            </label>
+            <input
+              class="contacts-form__input"
+              id="phone"
+              type="tel"
+            >
 
-        </form>
-      </div>
-    </section>
-  </main>
+            <!-- Email -->
+            <label for="mail" class="contacts-form__label">
+              Email
+            </label>
+            <input
+              class="contacts-form__input"
+              id="mail"
+              type="email"
+            >
 
-  <load src="/src/html/footer.html" />
+            <!-- Subject and Message -->
+            <label for="textarea" class="contacts-form__label">
+              Subject and Message
+            </label>
+            <textarea
+              class="contacts-form__textarea"
+              id="textarea"
+              rows="8"
+              name=""
+            >
+            </textarea>
+
+            <button class="contacts-form__button" type="submit">Submit</button>
+
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <load src="/src/html/footer.html" theme="footer_contacts"/>
+  </div>
 
   <script type="module" src="/src/js/main.js"></script>
 </body>

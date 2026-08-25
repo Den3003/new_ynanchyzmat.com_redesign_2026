@@ -7,6 +7,10 @@
   width: 100%;
   z-index: 10;
 
+  &_contacts {
+    position: static;
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: minmax(170px, 380px) minmax(785px, 1fr) minmax(330px, 380px);
