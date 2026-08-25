@@ -1,4 +1,4 @@
-import { swiper } from '../main';
+import { swiper, swiperTeam, swiperTimeline } from '../main';
 import { debounce } from './utils';
 
 const searchWrapper = document.querySelector('.js-search');
@@ -7,6 +7,30 @@ const searchInput = document.querySelector('.js-search-input');
 const searchCloseBtn = document.querySelector('.js-search-close');
 const searchResultBox = document.querySelector('.js-search-results');
 
+let searchIndex = [];
+
+let indexReady = null;
+
+function loadIndex() {
+  if (indexReady) {
+    return indexReady;
+  }
+
+  indexReady = fetch('search-index.json')
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+      return res.json();
+    })
+    .then(data => { searchIndex = data; })
+    .catch(err => {
+      console.error('Не удалось загрузить search-index.json:', err);
+      searchIndex = [];
+    });
+  return indexReady;
+}
+
 /* ===================================================================
     1. ИНДЕКС КОНТЕНТА
     На реальном сайте этот массив строится один раз при загрузке:
@@ -14,20 +38,21 @@ const searchResultBox = document.querySelector('.js-search-results');
     обходом DOM (document.querySelectorAll('.content-section'))
     и извлечением текста заголовка/абзацев в объект.
   =================================================================== */
-export function buildIndexFromDOM() {
-  return [...document.querySelectorAll('.js-content-section')].map(section => ({
-      id: section.id,
-      title: section.querySelector('.js-content-title')?.textContent.trim() || '',
-      text: section.querySelector('.js-content-text')?.textContent.trim() || '',
-      el: section,
-      swiperIndex: section.dataset.slideIndex || ''
-    }));
-}
+// export function buildIndexFromDOM() {
+//   return [...document.querySelectorAll('.js-content-section')].map(section => ({
+//       id: section.id,
+//       title: section.querySelector('.js-content-title')?.textContent.trim() || '',
+//       text: section.querySelector('.js-content-text')?.textContent.trim() || '',
+//       el: section,
+//       swiperIndex: section.dataset.slideIndex || ''
+//     }));
+// }
 
-const searchIndex = buildIndexFromDOM();
+// const searchIndex = buildIndexFromDOM();
 
 export const initSearch = () => {
-  
+  loadIndex();
+  // console.log('searchIndex: ', searchIndex);
   /* ===================================================================
       ПОИСК
     Простое совпадение по подстроке в заголовке и тексте (без учёта
@@ -102,7 +127,8 @@ export const initSearch = () => {
     }
 
     searchResultBox.innerHTML = currentResults.map((item, i) => `
-      <button type="button" class="search__result" role="option" data-index="${i}" data-target="${item.id}">
+      <button type="button" class="search__result" role="option" data-index="${i}" data-url="${item.url}"
+        data-item-id="${item.itemId}" data-slide-index="${item.slideIndex}">
         <span class="search__result-title">${highlight(item.title, query)}</span>
         <span class="search__result-meta">${highlight(snippet(item.text, query), query)}</span>
       </button>
@@ -121,22 +147,74 @@ export const initSearch = () => {
     activeIndex = i;
   };
 
-  const goToResult = (id) => {
-    const target = document.getElementById(id);
-    if (!target) {
+  const goToResult = (url, slideIndex, itemId) => {
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    console.log('currentPath: ', currentPath);
+    if (!url) {
+      return;
+    }
+    /* console.log('itemId: ', itemId);
+    const target = document.getElementById(itemId);
+    console.log('target: ', target);
+    target.classList.add('is-flashed');
+    setTimeout(() => target.classList.remove('is-flashed'), 9000); */
+    
+    // Если при поиске находимся на главной странице
+    if (url.includes('index.html') && (currentPath.includes('index.html') || currentPath === '/')) {
+      console.log('Главная');
+      swiper.slideToLoop(slideIndex); // просто переходим по индексу
+      const target = document.getElementById(itemId);
+      target.classList.add('is-flashed');
+      setTimeout(() => target.classList.remove('is-flashed'), 900);
       return;
     }
 
-    if (target.closest('.swiper-slide')) {
+    if (url.includes('about.html#timeline')) {
+      console.log(slideIndex);
+      swiperTimeline.slideToLoop(slideIndex);
+    }
+
+    if (url.includes('team.html#') && currentPath === '/team.html') {
+      swiperTeam.slideToLoop(slideIndex);
+      return;
+    }
+
+    if (url.includes('about.html#timeline-') && currentPath === '/about.html') {
+      swiperTimeline.slideToLoop(slideIndex);
+      window.location.href = '/about.html#timeline';
+    }
+
+    window.location.href = url;
+
+
+
+
+    /* if (url.includes(currentPath)) {
+      console.log('эта страница');
+      // const str = window.location.hash;
+      // window.location.pathname
+      console.log(window.location.hash === '#history');
+      // console.log(document.querySelector(window.location.hash));
+      // document.querySelector(window.location.hash).scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // url.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } */
+    // swiper.slideTo(slideIndex);
+    /* const target = document.getElementById(id);
+    if (!target) {
+      return;
+    } */
+
+    /* if (target.closest('.swiper-slide')) {
       console.log(target.dataset.slideIndex);
       swiper.slideToLoop(target.dataset.slideIndex);
-    }
+    } */
     // collapse();
-    console.log('target: ', target);
+    /* console.log('target: ', target);
     target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    target.classList.add('is-flashed');
+    target.classList.add('is-flashed'); */
     // setTimeout(() => console.log('proverka'), 900);
-    setTimeout(() => target.classList.remove('is-flashed'), 900);
+    // setTimeout(() => target.classList.remove('is-flashed'), 900);
   };
 
   const debounceSearch = debounce((q) => renderResults(q), 200);
@@ -176,7 +254,7 @@ export const initSearch = () => {
       setActive((activeIndex - 1 + count) % count);
     } else if (e.key === 'Enter' && activeIndex >= 0) {
       e.preventDefault();
-      goToResult(currentResults[activeIndex].id);
+      goToResult(currentResults[activeIndex].url, currentResults[activeIndex].slideIndex);
     } else if (e.key === 'Escape') {
       collapse();
       searchTrigger.focus();
@@ -186,7 +264,7 @@ export const initSearch = () => {
   searchResultBox.addEventListener('click', (e) => {
     const btn = e.target.closest('.search__result');
     if (btn) {
-      goToResult(btn.dataset.target);
+      goToResult(btn.dataset.url, btn.dataset.slideIndex, btn.dataset.itemId);
     }
   });
 

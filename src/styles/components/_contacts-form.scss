@@ -20,6 +20,9 @@
     border-bottom: 2px solid variable.$color-orange-primary;
     margin: 0 0 20px;
     // width: 690px;
+    outline: none;
+    color: variable.$color-main;
+    font-size: 20px;
   }
 
   &__textarea {

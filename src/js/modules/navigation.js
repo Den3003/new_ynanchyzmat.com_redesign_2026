@@ -44,7 +44,7 @@ export const initNavigation = () => {
 export const navigationLinkActive = () => {
   // 1. Получаем текущий pathname без query-параметров и хэшей
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  console.log('currentPath: ', currentPath);
+  // console.log('currentPath: ', currentPath);
 
   /* // 2. Находим все ссылки
   const navLinks = document.querySelectorAll('.nav-link'); */
@@ -52,9 +52,9 @@ export const navigationLinkActive = () => {
   items.forEach(item => {
     const link = item.querySelector('.navigation__link');
     // Нормализуем href ссылки (убираем слэш на конце)
-    console.log('link.href: ', link.href);
+    // console.log('link.href: ', link.href);
     const linkPath = new URL(link.href).pathname.replace(/\/$/, '') || '/';
-    console.log('linkPath: ', linkPath);
+    // console.log('linkPath: ', linkPath);
 
     // 3. Проверяем совпадение
     // Для главной страницы — строгое совпадение.
@@ -63,7 +63,7 @@ export const navigationLinkActive = () => {
       ? currentPath === '/' 
       : currentPath.startsWith(linkPath);
 
-      console.log('isActive: ', isActive);
+      // console.log('isActive: ', isActive);
     if (isActive) {
       link.setAttribute('aria-current', 'page');
     } else {

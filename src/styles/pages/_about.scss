@@ -281,6 +281,7 @@
 
   &__achievements-swiper-wrapper {
     max-width: 1030px;
+    height: 100%;
   }
 
   &__achievements-sliders-wrapper {
@@ -403,6 +404,7 @@
 
   &__clients-swiper-wrapper {
     max-width: 1000px;
+    height: 100%;
   }
 
   &__clients-sliders-wrapper {
@@ -482,6 +484,7 @@
 
   &__timeline-swiper {
     position: relative;
+    margin-left: 0;
     // flex:1 1 auto;
     height: /* calc(var(--digit-box) * 3) */732px;   /* видно 3 слайда: prev / active / next */
     overflow: hidden;
@@ -532,21 +535,15 @@
     right: -130%;
     z-index: -1;
     top: 50%;
-    // width: 300px;
-    // height: 300px;
     transform: translateY(-50%);
   }
 
   &__timeline-slider-item {
     position: relative;
     height: auto;
-    padding: 0 0 0 12px;
     display: grid;
     grid-template-columns: minmax(100px, 415px) 1fr;
     z-index: 10;
-    // display: flex;
-    // align-items: center;
-    // width: 100%;
 
     &:not(:last-child) {
       &:after {

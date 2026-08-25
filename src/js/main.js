@@ -16,9 +16,15 @@ import {
   Parallax,
 } from 'swiper/modules';
 import { modalController } from './modules/modal';
-import { buildIndexFromDOM, initSearch } from './modules/search';
+import { initSearch } from './modules/search';
 import { initNavigation, navigationLinkActive } from './modules/navigation';
 import { initRiskTimeline } from './modules/riskSection';
+
+
+// 1. Получаем текущий pathname без query-параметров и хэшей
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  console.log('currentPath: ', currentPath);
+
 
 tick();
 modalController({
@@ -42,8 +48,11 @@ modalController({
   blockVisible: '.main-laboratory__block',
 });
 
-const searchIndex = buildIndexFromDOM();
-console.log('searchIndex: ', searchIndex);
+// const searchIndex = buildIndexFromDOM();
+// console.log(!!window.location.hash);
+
+// const swiperSlide = document.getElementById(window.location.hash.slice(1));
+// console.log('swiperSlide: ', swiperSlide.dataset.slideIndex);
 
 initSearch();
 initNavigation();
@@ -106,6 +115,20 @@ document.querySelectorAll('.swiper__progress-item').forEach(track => {
   });
 });
 
+if (currentPath.includes('index.html') || currentPath === '/') {
+  const hashTeg = window.location.hash;
+  // console.log('hashTeg: ', hashTeg);
+  if (hashTeg) {
+    const swiperSlide = document.getElementById(window.location.hash.slice(1));
+    // console.log('swiperSlide: ', swiperSlide);
+    swiper.slideToLoop(swiperSlide.dataset.slideIndex);
+    swiperSlide.classList.add('is-flashed');
+    setTimeout(() => swiperSlide.classList.remove('is-flashed'), 2000);
+  }
+}
+
+
+
 // Слайдер страницы About Us в секции Achievements
 
 const swiperAchievements = new Swiper('.about__achievements .swiper', {
@@ -140,7 +163,7 @@ const swiperAboutClient = new Swiper('.about__clients .swiper', {
 
 // Слайдер страницы About Us в секции Company Timeline
 
-const swiperTimeline = new Swiper('.about__timeline .swiper', {
+export const swiperTimeline = new Swiper('.about__timeline .swiper', {
   modules: [Navigation],
   direction:'vertical',
   slidesPerView: 'auto',
@@ -160,6 +183,32 @@ swiperTimeline.on('progress', (swiper, progress) => {
   console.log(swiper);
   console.log(progress);
 });
+
+// // console.log('window.location.hash: ', window.location.hash.includes('#timeline'));
+// if (currentPath.includes('about.html') && window.location.hash.includes('#timeline-')) {
+//   console.log('timelineSwiper');
+//   const slideTimeline = document.getElementById(window.location.hash.slice(1));
+//   console.log('slideTimeline: ', slideTimeline);
+//   swiperTimeline.activeIndex(slideTimeline.dataset.slideIndex);
+  
+//   /* const hashTeg = window.location.hash;
+//   console.log('hashTeg: ', hashTeg);
+//   if (hashTeg) {
+//     const swiperSlide = document.getElementById(window.location.hash.slice(1));
+//     console.log('swiperSlide: ', swiperSlide);
+//     swiper.slideToLoop(swiperSlide.dataset.slideIndex);
+//   } */
+// }
+
+if (currentPath.includes('/about.html')
+    && window.location.hash.includes('#timeline-')) {
+  const slideTimeline = window.location.hash[window.location.hash.length - 1];
+  window.location.href = '/about.html#timeline';
+  swiperTimeline.slideToLoop(slideTimeline);
+  // const str = 
+  console.log('slideTimeline: ', slideTimeline);
+  
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   navigationLinkActive();
@@ -219,7 +268,7 @@ const swiperCertificates = new Swiper('.safety__certificates .swiper', {
 
 //  Слайдер страницы Our team
 
-const swiperTeam = new Swiper('.team .swiper', {
+export const swiperTeam = new Swiper('.team .swiper', {
   modules: [Parallax, Navigation],
   speed: 900,
   parallax: true,
@@ -238,9 +287,18 @@ const swiperTeam = new Swiper('.team .swiper', {
   },
 });
 
+//  Когда переходим с поиска на конкретного сотрудника
+if (currentPath.includes('team.html')) {
+  const hashTeam = window.location.hash;
+  if (hashTeam) {
+    swiperTeam.slideToLoop(hashTeam.slice(1));
+  }
+}
 
 
-//   Оранжевый круг в секции Timeline на странице About Us
+
+//   Оранжевый круг в секции Timeline на странице About Us  надо включить
+//   и сделать чтоб он срабатывал только на странице About Us
 
 
 // const progress = document.querySelector('.ring-progress');
