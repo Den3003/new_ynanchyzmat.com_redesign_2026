@@ -20,61 +20,100 @@
         </h1>
         <!-- <img class="contacts__image" src="/src/assets/images/contacts/contacts.jpg" alt=""> -->
         <div class="container contacts__container">
-          <form class="contacts__form contacts-form" action="">
+          <form class="contacts__form contacts-form" id="contactsForm" novalidate>
 
             <!-- Name -->
-            <label for="name" class="contacts-form__label">
-              Name
-            </label>
-            <input
-              class="contacts-form__input"
-              id="name"
-              type="text"
-            >
+            <div class="contacts-form__group">
+              <label for="name" class="contacts-form__label">Name</label>
+              
+              <input
+                class="contacts-form__input"
+                id="name"
+                type="text"
+                name="name"
+                autocomplete="name"
+                required
+                minlength="2"
+                maxlength="100"
+              >
+
+              <span class="contacts-form__error" id="name-error" role="alert" aria-live="polite"></span>
+            </div>
 
             <!-- Organization -->
-            <label for="organization" class="contacts-form__label">
-              Organization
-            </label>
-            <input
-              class="contacts-form__input"
-              id="organization"
-              type="text"
-            >
+            <div class="contacts-form__group">
+              <label for="organization" class="contacts-form__label">Organization</label>
+
+              <input
+                class="contacts-form__input"
+                id="organization"
+                type="text"
+              >
+
+              <span class="contacts-form__error" id="organization-error" role="alert" aria-live="polite"></span>
+            </div>
 
             <!-- Phone number -->
-            <label for="phone" class="contacts-form__label">
-              Phone number
-            </label>
-            <input
-              class="contacts-form__input"
-              id="phone"
-              type="tel"
-            >
+            <div class="contacts-form__group">
+              <label for="phone" class="contacts-form__label">Phone number</label>
+
+              <input
+                class="contacts-form__input"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                type="tel"
+                required
+              >
+
+              <span class="contacts-form__error" id="phone-error" role="alert" aria-live="polite"></span>
+            </div>
 
             <!-- Email -->
-            <label for="mail" class="contacts-form__label">
-              Email
-            </label>
-            <input
-              class="contacts-form__input"
-              id="mail"
-              type="email"
-            >
+            <div class="contacts-form__group">
+              <label for="email" class="contacts-form__label">Email</label>
+              
+              <input
+                class="contacts-form__input"
+                id="email"
+                type="email"
+                name="email"
+                autocomplete="email"
+                maxlength="150"
+                required
+              >
+
+              <span class="contacts-form__error" id="email-error" role="alert" aria-live="polite"></span>
+            </div>
 
             <!-- Subject and Message -->
-            <label for="textarea" class="contacts-form__label">
-              Subject and Message
-            </label>
-            <textarea
-              class="contacts-form__textarea"
-              id="textarea"
-              rows="8"
-              name=""
-            >
-            </textarea>
+            <div class="contacts-form__group">
+              <label for="message" class="contacts-form__label">Subject and Message</label>
 
-            <button class="contacts-form__button" type="submit">Submit</button>
+              <textarea
+                class="contacts-form__textarea"
+                id="message"
+                rows="8"
+                name="message"
+                required
+                minlength="10"
+                maxlength="2000"
+              >
+              </textarea>
+
+              <span class="contacts-form__error" id="message-error" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="contacts-form__hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button class="contacts-form__button" type="submit">
+              <span class="contacts-form__button-text">Submit</span>
+            </button>
+
+            <div class="contacts-form__status" id="contactsFormStatus" aria-live="polite"></div>
 
           </form>
         </div>

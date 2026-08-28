@@ -37,6 +37,17 @@ export default defineConfig({
     }),
   ],
 
+  // Проверка PHPMailer
+  server: {
+    proxy: {
+      '/php': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/php/, ''),
+      },
+    },
+  },
+
   // Настройки продакшн-сборки (Rollup)
   build: {
     outDir: 'dist',

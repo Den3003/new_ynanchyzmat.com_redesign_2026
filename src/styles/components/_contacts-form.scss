@@ -8,17 +8,32 @@
   flex-direction: column;
   // gap: 20px 0;
 
+  &__hp {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  &__group {
+    // margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
   &__label {
-    margin: 0 0 20px;
     font-size: 20px;
     font-weight: 500;
+    margin: 0 0 17px;
   }
 
   &__input {
     background: transparent;
     border: none;
     border-bottom: 2px solid variable.$color-orange-primary;
-    margin: 0 0 20px;
+    // margin: 0 0 20px;
     // width: 690px;
     outline: none;
     color: variable.$color-main;
@@ -29,6 +44,33 @@
     margin: 0 0 20px;
   }
 
+  &__error {
+    display: block;
+    min-height: 20px;
+    font-size: 12px;
+    color: variable.$color-main;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  &__group-error {
+    .contacts-form__input,
+    .contacts-form__textarea {
+      border-color: variable.$color-red-error;
+    }
+
+    .contacts-form__error {
+      opacity: 1;
+    }
+  }
+
+  &__group-success {
+    .contacts-form__input,
+    .contacts-form__textarea {
+      border-color: variable.$color-main;
+    }
+  }
+
   &__button {
     height: 51px;
     background: variable.$color-orange-primary;
@@ -37,5 +79,26 @@
     color: variable.$color-main;
     font-size: 20px;
     font-weight: 500;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &:not(:disabled):active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__status {
+    font-size: 15px;
+
+    &-success {
+      color: variable.$color-main;
+    }
+
+    &-error {
+      color: variable.$color-red-error;
+    }
   }
 }

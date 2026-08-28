@@ -19,11 +19,18 @@ import { modalController } from './modules/modal';
 import { initSearch } from './modules/search';
 import { initNavigation, navigationLinkActive } from './modules/navigation';
 import { initRiskTimeline } from './modules/riskSection';
+import { initFeedbackForm } from './modules/form';
 
 
 // 1. Получаем текущий pathname без query-параметров и хэшей
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
   console.log('currentPath: ', currentPath);
+
+const form = document.getElementById('contactsForm');
+if (form) {
+  initFeedbackForm(form);
+}
+
 
 
 tick();
