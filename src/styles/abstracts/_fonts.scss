@@ -8,3 +8,7 @@
 @font-face { 
   @include mixins.font(variable.$font-primary, 500)
 }
+
+@font-face { 
+  @include mixins.font(variable.$font-primary, 700)
+}
