@@ -76,10 +76,10 @@ export const swiper = new Swiper('.main-swiper.swiper', {
   fadeEffect: {
     crossFade: true // Фоны будут плавно растворяться друг в друге, а не моргать
   },
-  /* autoplay: {
+  autoplay: {
     delay: 5000,
     disableOnInteraction: false // Автоплей не отключится навсегда, если пользователь кликнет по слайду
-  }, */
+  },
   mousewheel: { // Включаем и настраиваем управление колесом мыши
     sensitivity: 1, // Чувствительность скролла (1 — стандарт)
     thresholdDelta: 15, // Минимальный порог прокрутки, чтобы избежать случайных «двойных» переключений
@@ -307,46 +307,55 @@ if (currentPath.includes('team.html')) {
 //   Оранжевый круг в секции Timeline на странице About Us  надо включить
 //   и сделать чтоб он срабатывал только на странице About Us
 
+const progressTimeline = () => {
 
-// const progress = document.querySelector('.ring-progress');
+  const progress = document.querySelector('.ring-progress');
 
-// const LENGTH = progress.getTotalLength(); // длина окружности, ~992.87 для r=158
+  if (!progress) {
+    return;
+  }
 
-// progress.setAttribute('stroke-dasharray', LENGTH);
-// progress.setAttribute('stroke-dashoffset', LENGTH); // старт: толстая линия полностью скрыта
+  const LENGTH = progress.getTotalLength(); // длина окружности, ~992.87 для r=158
 
-// const EASE = 0.12;
-// let currentOffset = LENGTH;
-// let targetOffset = LENGTH;
-// let rafId = null;
+  progress.setAttribute('stroke-dasharray', LENGTH);
+  progress.setAttribute('stroke-dashoffset', LENGTH); // старт: толстая линия полностью скрыта
 
-// function setTarget(sw){
-//   const p = Math.min(1, Math.max(0, sw.progress)); // 0..1
-//   targetOffset = LENGTH * (1 - p); // p=0 -> offset=LENGTH (не видно), p=1 -> offset=0 (виден весь круг)
-//   ensureLoopRunning();
-// }
+  const EASE = 0.12;
+  let currentOffset = LENGTH;
+  let targetOffset = LENGTH;
+  let rafId = null;
 
-// function tickCircle(){
-//   currentOffset += (targetOffset - currentOffset) * EASE;
-//   progress.setAttribute('stroke-dashoffset', currentOffset.toFixed(2));
+function setTarget(sw){
+  const p = Math.min(1, Math.max(0, sw.progress)); // 0..1
+  targetOffset = LENGTH * (1 - p); // p=0 -> offset=LENGTH (не видно), p=1 -> offset=0 (виден весь круг)
+  ensureLoopRunning();
+}
 
-//   if (Math.abs(targetOffset - currentOffset) < 0.05) {
-//     progress.setAttribute('stroke-dashoffset', targetOffset);
-//     rafId = null;
-//     return;
-//   }
-//   rafId = requestAnimationFrame(tickCircle);
-// }
+function tickCircle(){
+  currentOffset += (targetOffset - currentOffset) * EASE;
+  progress.setAttribute('stroke-dashoffset', currentOffset.toFixed(2));
 
-// function ensureLoopRunning(){
-//   if (rafId === null) {
-//     rafId = requestAnimationFrame(tickCircle);
-//   }
-// }
+  if (Math.abs(targetOffset - currentOffset) < 0.05) {
+    progress.setAttribute('stroke-dashoffset', targetOffset);
+    rafId = null;
+    return;
+  }
+  rafId = requestAnimationFrame(tickCircle);
+}
 
-// swiperTimeline.on('progress', setTarget);
-// swiperTimeline.on('setTranslate', setTarget);
-// setTarget(swiperTimeline); // подхватить реальное состояние сразу, без ожидания первого скролла
+function ensureLoopRunning(){
+  if (rafId === null) {
+    rafId = requestAnimationFrame(tickCircle);
+  }
+}
+
+swiperTimeline.on('progress', setTarget);
+swiperTimeline.on('setTranslate', setTarget);
+setTarget(swiperTimeline); // подхватить реальное состояние сразу, без ожидания первого скролла
 
 
+
+};
+
+progressTimeline();
 
