@@ -20,7 +20,23 @@ $color-blue: #156e9e;
 $color-red-error: #dc2626;
 
 
+// Дизайн-токены секции. Меняете фирменный цвет — меняете здесь.
+$tm-bg: #2f3c47;
+$tm-bg-deep: #26313a;
+$tm-ink: #eef3f7;
+$tm-ink-muted: #b9c6d0;
+$tm-ink-dim: #8ea0ad;
+$tm-accent: #f07e26;
+$tm-line: rgba(238, 243, 247, 0.12);
 
+$tm-font-display: 'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
+$tm-font-body: 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+$tm-radius: 4px;
+$tm-gutter: clamp(20px, 4vw, 64px);
+
+$tm-bp-md: 1024px;
+$tm-bp-sm: 680px;
 
 
 

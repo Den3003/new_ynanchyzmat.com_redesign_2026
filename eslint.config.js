@@ -24,6 +24,8 @@ export default [
 
     // 3. Ваши собственные правила (переопределение или дополнение)
     rules: {
+      // 'nonblock-statement-body-position': ["error", "beside", { "overrides": { "while": "below" } }],
+
       'no-unused-vars': ["error", { "varsIgnorePattern": "swiper" }],
       // Отключаем правило, которое требует явный return в стрелочных функциях
       'arrow-body-style': ['error', 'as-needed'],
@@ -44,7 +46,7 @@ export default [
       // Не использовать alert, confirm, prompt (можно отключить)
       'no-alert': 'warn',
       // Требовать фигурные скобки у блоков
-      'curly': ['error', 'all'],
+      // 'curly': ['error', 'all'],
     },
 
     // 4. Игнорируемые файлы и папки (можно вынести в отдельный объект)

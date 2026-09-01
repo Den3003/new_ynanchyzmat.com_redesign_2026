@@ -20,6 +20,7 @@ import { initSearch } from './modules/search';
 import { initNavigation, navigationLinkActive } from './modules/navigation';
 import { initRiskTimeline } from './modules/riskSection';
 import { initFeedbackForm } from './modules/form';
+import { initTurkmenistanMap } from './modules/turkmenistan/index';
 
 
 // 1. Получаем текущий pathname без query-параметров и хэшей
@@ -29,6 +30,23 @@ import { initFeedbackForm } from './modules/form';
 const form = document.getElementById('contactsForm');
 if (form) {
   initFeedbackForm(form);
+}
+
+
+// Секция карты 
+
+const section = document.querySelector('#turkmenistan');
+const map = initTurkmenistanMap(section, { config: { debug: { logPerformance: true } } });
+
+// Пример внешнего управления: карта сообщает о смене велаята.
+section?.addEventListener('welayat:change', (event) => {
+  if (import.meta.env.DEV) {
+    console.info('welayat →', event.detail.id);
+  }
+});
+
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => map?.destroy());
 }
 
 

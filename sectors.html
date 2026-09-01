@@ -7,7 +7,7 @@
   <link rel="preload" href="/fonts/Futura-500.woff2" as="font" type="font/woff2" crossorigin>
   <title>Sectors | Ynanch Hyzmat</title>
 </head>
-<body>
+<body class="body-sectors">
   <load src="/src/html/header.html" />
 
   <main class="sectors">
@@ -126,9 +126,49 @@
       </div>
     </section>
 
+    <section class="tm" id="turkmenistan" aria-labelledby="tm-title">
+      <div class="container">
+        <header class="tm__header">
+          <h2 class="tm__title" id="tm-title" data-tm-title>Turkmenistan</h2>
+        </header>
+
+        <div class="tm__layout">
+          <div class="tm__map">
+            <div class="tm__stage" data-tm-stage>
+              <canvas class="tm__canvas" data-tm-canvas aria-hidden="true"></canvas>
+              <div class="tm__overlay" data-tm-overlay aria-hidden="true"></div>
+              <p class="tm__loader" data-tm-loader>Building terrain…</p>
+            </div>
+
+            <div class="tm__stage-foot">
+              <p class="tm__hint" data-tm-hint></p>
+              <button class="tm__reset" type="button" data-tm-reset></button>
+            </div>
+
+            <!-- Дублирующее управление для клавиатуры и скринридеров -->
+            <ul class="tm__a11y" data-tm-a11y aria-label="Select a welayat"></ul>
+            <p class="tm__sr-only" role="status" aria-live="polite" data-tm-live></p>
+          </div>
+
+          <aside class="tm__panel" data-tm-panel></aside>
+        </div>
+
+        <div class="tm__bottom">
+          <ul class="tm-legend" data-tm-legend-facilities></ul>
+
+          <div class="tm-projects">
+            <h3 class="tm-projects__title" data-tm-projects-title></h3>
+            <ul class="tm-projects__list" data-tm-legend-projects></ul>
+          </div>
+        </div>
+
+        <footer class="tm-notes" data-tm-notes></footer>
+      </div>
+    </section>
+
   </main>
 
-  <load src="/src/html/footer.html" theme="footer_sectors"/>
+  <load src="/src/html/footer.html"/>
 
   <script type="module" src="/src/js/main.js"></script>
 </body>

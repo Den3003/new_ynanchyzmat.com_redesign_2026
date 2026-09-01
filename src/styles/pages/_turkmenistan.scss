@@ -1,0 +1,447 @@
+@use '../abstracts/variables' as *;
+
+/* ===========================================================================
+   Секция «Turkmenistan»
+   Блоки: .tm (каркас), .tm-legend, .tm-projects, .tm-notes, .tm-marker (оверлей)
+   =========================================================================== */
+
+.tm {
+  --tm-label-size: 13px;
+
+  position: relative;
+  padding: 70px 0 160px;
+  background: radial-gradient(120% 90% at 30% 10%, #394854 0%, $tm-bg 45%, $tm-bg-deep 100%);
+  color: $tm-ink;
+  font-family: $tm-font-body;
+  overflow: hidden;
+
+  @media (max-width: $tm-bp-sm) {
+    --tm-label-size: 11px;
+  }
+}
+
+.tm__inner {
+  width: min(1440px, 100%);
+  margin-inline: auto;
+  padding-inline: $tm-gutter;
+}
+
+.tm__title {
+  margin: 0 0 clamp(16px, 2.5vw, 32px);
+  font-family: $tm-font-display;
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1;
+}
+
+.tm__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 22.5rem);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+
+  @media (max-width: $tm-bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* --- Сцена ---------------------------------------------------------------- */
+
+.tm__stage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  min-height: 320px;
+  touch-action: pan-y;
+  contain: layout paint;
+
+  &.is-hovering {
+    cursor: pointer;
+  }
+
+  @media (max-width: $tm-bp-sm) {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+// Канвас вынут из потока намеренно: если чужие глобальные стили зададут ему
+// height: auto, он начнёт влиять на высоту .tm__stage, ResizeObserver поймает
+// изменение, пересоздаст буфер кадра — и так по кругу каждый кадр.
+.tm__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.tm__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tm__loader {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  margin: 0;
+  text-align: center;
+  color: $tm-ink-dim;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.4s ease;
+
+  .tm.is-ready & {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .tm.is-fallback & {
+    position: static;
+    padding: 3rem 1rem;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+}
+
+.tm.is-fallback {
+  .tm__canvas,
+  .tm__overlay {
+    display: none;
+  }
+
+  .tm__stage {
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  .tm__a11y {
+    position: static;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.tm__stage-foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 34px;
+  margin-top: 8px;
+}
+
+.tm__hint {
+  margin: 0;
+  color: $tm-ink-dim;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tm__reset {
+  padding: 6px 14px;
+  border: 1px solid $tm-line;
+  border-radius: 999px;
+  background: transparent;
+  color: $tm-ink-muted;
+  font: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    color: $tm-ink;
+    border-color: rgba(240, 126, 38, 0.6);
+  }
+
+  .tm.is-welayat-selected & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* --- Текстовая панель ------------------------------------------------------ */
+
+.tm__panel {
+  padding-top: clamp(8px, 3vw, 48px);
+}
+
+.tm-panel__heading {
+  margin: 0 0 12px;
+  font-family: $tm-font-display;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: $tm-accent;
+}
+
+.tm-panel__text {
+  margin: 0 0 1.25em;
+  color: $tm-ink-muted;
+  font-size: clamp(0.875rem, 0.9vw, 0.9375rem);
+  line-height: 1.75;
+  text-align: justify;
+  hyphens: auto;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tm__panel.is-entering {
+  animation: tm-fade-up 0.45s ease both;
+}
+
+@keyframes tm-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* --- Легенды --------------------------------------------------------------- */
+
+.tm__bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 22.5rem);
+  gap: clamp(24px, 4vw, 56px);
+  margin-top: clamp(24px, 3vw, 44px);
+
+  @media (max-width: $tm-bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tm-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 4px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tm-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.tm-legend__icon {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+}
+
+.tm-legend__label {
+  color: $tm-ink-muted;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+
+.tm-projects__title {
+  margin: 0 0 12px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: $tm-ink;
+}
+
+.tm-projects__list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tm-projects__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $tm-ink-muted;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.tm-projects__dot {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--tm-project-color, #{$tm-accent});
+}
+
+.tm-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px clamp(24px, 8vw, 120px);
+  margin-top: clamp(20px, 3vw, 40px);
+}
+
+.tm-notes__item {
+  margin: 0;
+  color: rgba(240, 126, 38, 0.85);
+  font-size: 0.6875rem;
+  letter-spacing: 0.01em;
+}
+
+/* --- Маркеры поверх сцены --------------------------------------------------- */
+
+.tm-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // will-change здесь намеренно нет: полсотни постоянно поднятых композитных
+  // слоёв обходятся дороже, чем выигрыш. translate3d и так задействует GPU.
+  transition: opacity 0.3s ease, filter 0.3s ease;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+  &.is-dimmed {
+    opacity: 0.35;
+    filter: saturate(0.5);
+  }
+}
+
+.tm-marker--label {
+  .tm-marker__text {
+    color: $tm-ink;
+    font-family: $tm-font-display;
+    font-size: var(--tm-label-size);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    transition: color 0.3s ease;
+  }
+
+  &.is-active .tm-marker__text {
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(240, 126, 38, 0.75);
+  }
+}
+
+.tm-marker--capital .tm-marker__text {
+  font-size: calc(var(--tm-label-size) * 0.82);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: $tm-ink-muted;
+}
+
+.tm-marker--project {
+  // Значения по умолчанию. Любое из них перебивается полями в data/facilities.js
+  // (diameter, fontSize, color, textColor, glow) — они приходят инлайн-стилем.
+  --tm-dot-size: 12px;
+  --tm-dot-font: 8px;
+  --tm-dot-text: rgba(255, 255, 255, 0.92);
+  --tm-dot-glow: 0;
+
+  flex-direction: column;
+  gap: 4px;
+
+  .tm-marker__dot {
+    width: var(--tm-dot-size);
+    height: var(--tm-dot-size);
+    border-radius: 50%;
+    background: var(--tm-project-color, #{$tm-accent});
+    box-shadow:
+      0 0 0 2px rgba(0, 0, 0, 0.25),
+      0 0 calc(var(--tm-dot-size) * 0.5 * var(--tm-dot-glow))
+        calc(var(--tm-dot-size) * 0.26 * var(--tm-dot-glow))
+        color-mix(in srgb, var(--tm-project-color) 45%, transparent),
+      0 0 calc(var(--tm-dot-size) * 1.2 * var(--tm-dot-glow))
+        calc(var(--tm-dot-size) * 0.48 * var(--tm-dot-glow))
+        color-mix(in srgb, var(--tm-project-color) 20%, transparent);
+  }
+
+  .tm-marker__caption {
+    font-size: var(--tm-dot-font);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--tm-dot-text);
+    white-space: nowrap;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  &.tm-marker--md {
+    --tm-dot-size: 16px;
+  }
+
+  // Крупный круг: текст печатается внутри него.
+  &.tm-marker--lg {
+    --tm-dot-size: 54px;
+    --tm-dot-font: 7px;
+    --tm-dot-glow: 1;
+
+    .tm-marker__caption {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 0 6px;
+      text-align: center;
+      white-space: normal;
+      letter-spacing: 0.06em;
+      text-shadow: none;
+    }
+  }
+}
+
+/* --- Служебное -------------------------------------------------------------- */
+
+.tm__a11y,
+.tm__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  list-style: none;
+
+  button:focus-visible {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    padding: 8px 14px;
+    background: $tm-bg-deep;
+    color: $tm-ink;
+    border: 2px solid $tm-accent;
+    z-index: 10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm *,
+  .tm *::before,
+  .tm *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
