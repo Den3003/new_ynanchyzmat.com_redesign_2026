@@ -1,4 +1,6 @@
-export const modalController = ({modal, btnOpen, btnClose, blockVisible, time = 400}) => { 
+import { swiper } from '../main';
+
+export const modalController = ({modal, btnOpen, btnClose, blockVisible, swiperMain = 'true', time = 400}) => { 
   const buttonElements = document.querySelectorAll(btnOpen);  
   const modalElem = document.querySelector(modal); 
   const blockHidden = document.querySelector(blockVisible); 
@@ -22,6 +24,10 @@ export const modalController = ({modal, btnOpen, btnClose, blockVisible, time = 
 
       modalElem.style.opacity = 0;
       blockHidden.style.opacity = 1;
+      if (swiperMain && !swiper.autoplay.running) {
+        swiper.autoplay.start();
+      }
+      
       
       setTimeout(() => {  
         modalElem.style.visibility = 'hidden';
@@ -33,6 +39,9 @@ export const modalController = ({modal, btnOpen, btnClose, blockVisible, time = 
   };
         
   const openModal = () => { 
+      if (swiperMain && swiper.autoplay.running) {
+        swiper.autoplay.stop();
+      }
       modalElem.style.visibility = 'visible'; 
       modalElem.style.opacity = 1;   
       blockHidden.style.visibility = 'hidden'; 

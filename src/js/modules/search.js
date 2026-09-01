@@ -16,14 +16,16 @@ function loadIndex() {
     return indexReady;
   }
 
-  indexReady = fetch('search-index.json')
+  indexReady = fetch('/search-index.json')
     .then(res => {
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
       }
       return res.json();
     })
-    .then(data => { searchIndex = data; })
+    .then(data => { 
+      searchIndex = data; 
+    })
     .catch(err => {
       console.error('Не удалось загрузить search-index.json:', err);
       searchIndex = [];
