@@ -52,7 +52,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true, // Очищать dist перед каждой сборкой
-    rollupOptions: {
+    rolldownOptions: {
       // Передаем авто-найденные HTML страницы
       input: getRootHtmlInputs(),
 
