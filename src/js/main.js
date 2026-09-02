@@ -189,12 +189,18 @@ const swiperAboutClient = new Swiper('.about__clients .swiper', {
 // Слайдер страницы About Us в секции Company Timeline
 
 export const swiperTimeline = new Swiper('.about__timeline .swiper', {
-  modules: [Navigation],
+  modules: [Navigation, Mousewheel],
   direction:'vertical',
   slidesPerView: 'auto',
   centeredSlides: true,
   spaceBetween: 30,
   initialSlide: 1,
+  mousewheel: { // Включаем и настраиваем управление колесом мыши
+    sensitivity: 1, // Чувствительность скролла (1 — стандарт)
+    releaseOnEdges: true, // Отпускает скролл браузера на первом и последнем слайде
+    forceToAxis: true, // Игнорирует движения по другой оси (защита от случайных диагоналей)
+    thresholdDelta: 15, // Минимальный порог прокрутки, чтобы избежать случайных «двойных» переключений
+  },
 
   navigation: {
     nextEl: '.about__timeline-button-next',
