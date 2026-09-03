@@ -29,9 +29,9 @@ export const FACILITY_TYPES = {
     icon: 'icons/oil-field-icon.png' },
   gtg: { label: 'Gas-to-gasoline plant (GTG)', model: 'models/gtg.glb', icon: 'icons/gtg-icon.png' },
   compression: { label: 'Key natural gas compression stations', model: 'models/compression.glb',
-    icon: '/public/icons/compression-icon.png' },
-  gasPlant: { label: 'Key natural gas processing plants', icon: 'icons/gas-processing-plant.svg' },
-  gasField: { label: 'Key natural gas extraction fields', icon: 'icons/gas-field.svg' },
+    icon: 'icons/compression-icon.png' },
+  gasPlant: { label: 'Key natural gas processing plants', model: 'models/gasPlant.glb', icon: 'icons/gasPlant-icon.png' },
+  gasField: { label: 'Key natural gas extraction fields', model: 'models/gasField.glb', icon: 'icons/gasField-icon.png' },
 };
 
 export const FACILITIES = [
