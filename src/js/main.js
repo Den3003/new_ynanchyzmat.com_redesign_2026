@@ -108,21 +108,33 @@ export const swiper = new Swiper('.main-swiper.swiper', {
       const progress = 1 - percentage;
 
       // Ищем внутреннюю оранжевую линию для текущего активного слайда (по realIndex)
-      const activeLine = document.querySelector(
+      const activeLineFill = document.querySelector(
         `.main-swiper__progress-item[data-index="${s.realIndex}"] .main-swiper__progress-fill`
       );
-      if (activeLine) {
-        activeLine.style.transform = `scaleX(${progress})`;
-      }
+      const activeLine = document.querySelector(
+				`.main-swiper__progress-item[data-index="${s.realIndex}"] .main-swiper__progress-line`
+			);
+      // const swiperLinesProgress = document
+      if (activeLineFill) {
+        activeLineFill.style.transform = `scaleX(${progress})`;
+        activeLine.classList.add('is-active');
+      } 
+      // activeLine.classList.remove('is-active');
       // console.log('activeLine: ', activeLine);
       // console.log('time: ', time);
     },
     slideChange(s) {
       const allLines = document.querySelectorAll('.main-swiper__progress-fill');
+      const allSwiperLines = document.querySelectorAll('.main-swiper__progress-line');
 
       allLines.forEach((fill, index) => {
         if (index !== s.realIndex) {
           fill.style.transform = 'scaleX(0)';
+        }
+      });
+      allSwiperLines.forEach((line, index) => {
+        if (index !== s.realIndex) {
+          line.classList.remove('is-active');
         }
       });
       // console.log('s: ', s);
@@ -132,12 +144,12 @@ export const swiper = new Swiper('.main-swiper.swiper', {
 
 // Интерактив: Переключение слайдов при клике на саму оранжевую линию
 
-document.querySelectorAll('.swiper__progress-item').forEach(track => {
-  track.addEventListener('click', () => {
-    const targetIndex = parseInt(track.getAttribute('data-index'), 10);
-    // Используем slideToLoop, так как у нас включен режим loop: true
-    swiper.slideToLoop(targetIndex);
-  });
+document.querySelectorAll('.main-swiper__progress-item').forEach(track => {
+	track.addEventListener('click', () => {
+		const targetIndex = parseInt(track.getAttribute('data-index'), 10);
+		// Используем slideToLoop, так как у нас включен режим loop: true
+		swiper.slideToLoop(targetIndex);
+	});
 });
 
 if (currentPath.includes('index.html') || currentPath === '/') {
