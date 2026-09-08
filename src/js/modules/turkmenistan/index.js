@@ -1,3 +1,4 @@
+import { el } from '../utils.js';
 import { CONFIG } from './config.js';
 import { CONTENT } from './data/content.js';
 import { FACILITIES, FACILITY_TYPES, PROJECTS, PROJECT_TYPES } from './data/facilities.js';
@@ -28,21 +29,22 @@ export function initTurkmenistanMap(root, options = {}) {
   const config = mergeDeep(structuredClone(CONFIG), options.config ?? {});
 
   const dom = {
-    stage: root.querySelector('[data-tm-stage]'),
-    canvas: root.querySelector('[data-tm-canvas]'),
-    overlay: root.querySelector('[data-tm-overlay]'),
-    loader: root.querySelector('[data-tm-loader]'),
-    title: root.querySelector('[data-tm-title]'),
-    panel: root.querySelector('[data-tm-panel]'),
-    reset: root.querySelector('[data-tm-reset]'),
-    hint: root.querySelector('[data-tm-hint]'),
-    facilities: root.querySelector('[data-tm-legend-facilities]'),
-    projects: root.querySelector('[data-tm-legend-projects]'),
-    projectsTitle: root.querySelector('[data-tm-projects-title]'),
-    notes: root.querySelector('[data-tm-notes]'),
-    a11y: root.querySelector('[data-tm-a11y]'),
-    live: root.querySelector('[data-tm-live]'),
-  };
+		stage: root.querySelector('[data-tm-stage]'),
+		canvas: root.querySelector('[data-tm-canvas]'),
+		overlay: root.querySelector('[data-tm-overlay]'),
+		loader: root.querySelector('[data-tm-loader]'),
+		title: root.querySelector('[data-tm-title]'),
+		panel: root.querySelector('[data-tm-panel]'),
+		wrapperPanel: root.querySelector('[data-tm-wrapper-panel]'),
+		reset: root.querySelector('[data-tm-reset]'),
+		hint: root.querySelector('[data-tm-hint]'),
+		facilities: root.querySelector('[data-tm-legend-facilities]'),
+		projects: root.querySelector('[data-tm-legend-projects]'),
+		projectsTitle: root.querySelector('[data-tm-projects-title]'),
+		notes: root.querySelector('[data-tm-notes]'),
+		a11y: root.querySelector('[data-tm-a11y]'),
+		live: root.querySelector('[data-tm-live]'),
+	};
 
   renderStaticContent(dom, content);
 
@@ -219,25 +221,109 @@ function renderA11yControls(dom, content, select) {
   );
 }
 
+// Создание таблиц
+
+const createRow = (row) => el('tr', {},
+    el('th', { scope: 'row', className: 'tm-panel__table-label', textContent: row.label }),
+    el('td', { className: 'tm-panel__table-value', textContent: row.value })
+  );
+
+const createTable = (table) =>
+  el('table', { className: 'tm-panel__table' },
+    el('caption', { className: 'tm-panel__table-title', textContent: table.title }),
+    el('tbody', {}, table.rows.map(createRow))
+  );
+
+function renderTables(tables) {
+  const fragment = document.createDocumentFragment();
+  fragment.append(...tables.map(createTable));
+	return fragment;
+}
+
+function createInfoNodes(blocks) {
+  return blocks.map((block) => {
+    if (Array.isArray(block.items) && block.items.length) {
+      const ul = document.createElement('ul');
+      ul.className = 'tm-panel__list';
+      for (const text of block.items) {
+				const li = document.createElement('li');
+				li.textContent = text;
+				ul.append(li);
+			}
+			return ul;
+    }
+
+    const p = document.createElement('p');
+    p.className = 'tm-panel__text';
+
+    if (block.label) {
+      const span = document.createElement('span');
+      span.className = 'tm-panel__span-text';
+      span.textContent = block.label;
+      p.append(span);
+    }
+
+    p.append(block.value);
+    return p;
+  });
+}
+
 function setPanel(dom, content, id) {
   if (!dom.panel) return;
 
-  const paragraphs = id ? content.welayats[id]?.text ?? content.intro : content.intro;
+  const paragraphs = id ? content.welayats[id]?.generalInfo ?? content.intro : content.intro;
   const heading = id ? content.welayats[id]?.name : null;
+	const headingTitle = id ? content.welayats[id]?.title : null;
+	const titleIndustry = id ? content.welayats[id]?.titleIndustry : null;
+	const imgWelayat = id ? content.welayats[id]?.imgWelayat : null;
 
   const nodes = [];
+
+  if (imgWelayat) {
+		const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'tm-panel__wrapper-image';
+		const img = document.createElement('img');
+    img.className = 'tm-panel__image';
+    img.src = imgWelayat;
+    imgWrapper.appendChild(img);
+    nodes.push(imgWrapper);
+	}
+
   if (heading) {
-    const title = document.createElement('h3');
-    title.className = 'tm-panel__heading';
-    title.textContent = heading;
-    nodes.push(title);
+		const title = document.createElement('h3');
+		title.className = 'tm-panel__heading';
+		title.textContent = headingTitle;
+		nodes.push(title);
+		dom.wrapperPanel.style.alignSelf = 'stretch';
+		dom.wrapperPanel.classList.add('welayat-selected');
+
+		const infoNodes = createInfoNodes(content.welayats[id]?.generalInfo);
+		nodes.push(...infoNodes);
+
+		//  Вставка titleIndustry
+		const subTitle = document.createElement('h3');
+		subTitle.className = 'tm-panel__heading';
+		subTitle.textContent = titleIndustry;
+		nodes.push(subTitle);
+
+    // Вставка Таблиц
+    if (content.welayats[id]?.tables) {
+      nodes.push(renderTables(content.welayats[id]?.tables));
+    }
+			
+
+	} else {
+    dom.wrapperPanel.style.alignSelf = 'center';
+    dom.wrapperPanel.classList.remove('welayat-selected');
+    paragraphs.forEach(text => {
+			const paragraph = document.createElement('p');
+			paragraph.className = 'tm-panel__text';
+			paragraph.textContent = text;
+			nodes.push(paragraph);
+		});
   }
-  paragraphs.forEach((text) => {
-    const paragraph = document.createElement('p');
-    paragraph.className = 'tm-panel__text';
-    paragraph.textContent = text;
-    nodes.push(paragraph);
-  });
+  
+  
 
   dom.panel.classList.remove('is-entering');
   // Перезапуск CSS-анимации появления.

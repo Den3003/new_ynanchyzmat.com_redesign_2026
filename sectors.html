@@ -166,19 +166,23 @@
             <!-- Дублирующее управление для клавиатуры и скринридеров -->
             <ul class="tm__a11y" data-tm-a11y aria-label="Select a welayat"></ul>
             <p class="tm__sr-only" role="status" aria-live="polite" data-tm-live></p>
+
+            <div class="tm__bottom">
+              <ul class="tm-legend" data-tm-legend-facilities></ul>
+
+              <div class="tm-projects">
+                <h3 class="tm-projects__title" data-tm-projects-title></h3>
+                <ul class="tm-projects__list" data-tm-legend-projects></ul>
+              </div>
+            </div>
           </div>
 
-          <aside class="tm__panel" data-tm-panel></aside>
+          <aside class="tm__wrapper-panel" data-tm-wrapper-panel>
+            <div class="tm__panel" data-tm-panel></div>
+          </aside>
         </div>
 
-        <div class="tm__bottom">
-          <ul class="tm-legend" data-tm-legend-facilities></ul>
-
-          <div class="tm-projects">
-            <h3 class="tm-projects__title" data-tm-projects-title></h3>
-            <ul class="tm-projects__list" data-tm-legend-projects></ul>
-          </div>
-        </div>
+        
 
         <footer class="tm-notes" data-tm-notes></footer>
       </div>

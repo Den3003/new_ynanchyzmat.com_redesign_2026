@@ -6,6 +6,13 @@ export function debounce(func, delay = 250) {
   };
 }
 
+export function el(tag, props = {}, ...children) {
+	const node = document.createElement(tag);
+	Object.assign(node, props);
+	node.append(...children.flat());
+	return node;
+}
+
 
 
 
