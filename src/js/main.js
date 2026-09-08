@@ -321,6 +321,7 @@ export const swiperTeam = new Swiper('.team .swiper', {
 //  Когда переходим с поиска на конкретного сотрудника
 if (currentPath.includes('team.html')) {
   const hashTeam = window.location.hash;
+  console.log('hashTeam: ', hashTeam);
   if (hashTeam) {
     swiperTeam.slideToLoop(hashTeam.slice(1));
   }
