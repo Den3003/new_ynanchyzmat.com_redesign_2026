@@ -61,6 +61,7 @@
     text-decoration: none;
     color: inherit;
     font-size: 20px;
+    font-weight: 500;
     transition: color .3s ease-in;
 
     &:hover {
@@ -98,12 +99,13 @@
 
   &__title {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     margin: 0 0 7px;
   }
 
   &__text {
-    font-size: 14px;
+    font-size: 12px;
     margin: 0;
   }
 

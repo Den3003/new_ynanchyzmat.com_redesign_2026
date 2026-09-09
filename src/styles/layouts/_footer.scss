@@ -34,6 +34,11 @@
     }
   }
 
+  &_team {
+    position: static;
+    flex-shrink: 0;          /* страховка от сжатия футера */
+  }
+
   &.footer_black {
     color: variable.$color-black;
     position: static;

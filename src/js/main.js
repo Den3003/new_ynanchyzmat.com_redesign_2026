@@ -169,33 +169,33 @@ if (currentPath.includes('index.html') || currentPath === '/') {
 // Слайдер страницы About Us в секции Achievements
 
 const swiperAchievements = new Swiper('.about__achievements .swiper', {
-  modules: [Navigation],
-  slidesPerView: 5,
-  centeredSlides: true,
-  spaceBetween: 60,
-  initialSlide: 2,
+	modules: [Navigation],
+	slidesPerView: 5,
+	centeredSlides: true,
+	spaceBetween: 60,
+	initialSlide: 2,
+	loop: true,
 
-  navigation: {
-    nextEl: '.about__achievements-button-next',
-    prevEl: '.about__achievements-button-prev',
-  },
-
+	navigation: {
+		nextEl: '.about__achievements-button-next',
+		prevEl: '.about__achievements-button-prev',
+	},
 });
 
 // Слайдер страницы About Us в секции Our key Clients
 
 const swiperAboutClient = new Swiper('.about__clients .swiper', {
-  modules: [Navigation],
-  slidesPerView: 5,
-  centeredSlides: true,
-  spaceBetween: 60,
-  initialSlide: 2,
+	modules: [Navigation],
+	slidesPerView: 5,
+	centeredSlides: true,
+	spaceBetween: 60,
+	initialSlide: 2,
+	loop: true,
 
-  navigation: {
-    nextEl: '.about__clients-button-next',
-    prevEl: '.about__clients-button-prev',
-  },
-
+	navigation: {
+		nextEl: '.about__clients-button-next',
+		prevEl: '.about__clients-button-prev',
+	},
 });
 
 // Слайдер страницы About Us в секции Company Timeline
@@ -206,7 +206,7 @@ export const swiperTimeline = new Swiper('.about__timeline .swiper', {
   slidesPerView: 'auto',
   centeredSlides: true,
   spaceBetween: 30,
-  initialSlide: 1,
+  initialSlide: 0,
   mousewheel: { // Включаем и настраиваем управление колесом мыши
     sensitivity: 1, // Чувствительность скролла (1 — стандарт)
     releaseOnEdges: true, // Отпускает скролл браузера на первом и последнем слайде
@@ -261,51 +261,63 @@ document.addEventListener('DOMContentLoaded', () => {
 //  Слайдер страницы Safety в секции At Ynanch Hyzmat
 
 const swiperSafetyDescription = new Swiper('.safety__description .swiper', {
-  modules: [EffectFade, Mousewheel],
-  allowTouchMove: true,
-  direction:'vertical',
-  loop: true,
-  // effect: 'fade',
-  /* fadeEffect: {
+	modules: [EffectFade, Mousewheel],
+	allowTouchMove: true,
+	direction: 'vertical',
+	// loop: true,
+	// effect: 'fade',
+	/* fadeEffect: {
     crossFade: true // Фоны будут плавно растворяться друг в друге, а не моргать
   }, */
-  mousewheel: { // Включаем и настраиваем управление колесом мыши
-    sensitivity: 1, // Чувствительность скролла (1 — стандарт)
-    thresholdDelta: 15, // Минимальный порог прокрутки, чтобы избежать случайных «двойных» переключений
-  },
-  slidesPerView: 3,
-  // centeredSlides: true,
-  spaceBetween: 20,
+	mousewheel: {
+		// Включаем и настраиваем управление колесом мыши
+		sensitivity: 1, // Чувствительность скролла (1 — стандарт)
+		releaseOnEdges: true, // Отпускает скролл браузера на первом и последнем слайде
+		forceToAxis: true, // Игнорирует движения по другой оси (защита от случайных диагоналей)
+		thresholdDelta: 15, // Минимальный порог прокрутки, чтобы избежать случайных «двойных» переключений
+	},
+	slidesPerView: 3,
+	// centeredSlides: true,
+	spaceBetween: 20,
 
-  on: {
-    slideChange(s) {
+	on: {
+    init(s) {
+      console.log('s: ', s.realIndex);
       const images = document.querySelectorAll('.safety__description-image');
-      images.forEach(img => {
-        if (+img.dataset.index === s.realIndex) {
-          img.classList.add('safety__description-image_active');
-        } else {
-          img.classList.remove('safety__description-image_active');
-        }
-      });
-    }
-  }
+			images.forEach(img => {
+				if (+img.dataset.index === s.realIndex) {
+					img.classList.add('safety__description-image_active');
+				} 
+			});
+    },
+		slideChange(s) {
+			const images = document.querySelectorAll('.safety__description-image');
+			images.forEach(img => {
+				if (+img.dataset.index === s.realIndex) {
+					img.classList.add('safety__description-image_active');
+				} else {
+					img.classList.remove('safety__description-image_active');
+				}
+			});
+		},
+	},
 });
 
 
 //  Слайдер страницы Safety в секции Certificates
 
 const swiperCertificates = new Swiper('.safety__certificates .swiper', {
-  modules: [Navigation],
-  slidesPerView: 'auto',
-  centeredSlides: true,
-  spaceBetween: -10,
-  initialSlide: 2,
+	modules: [Navigation],
+	slidesPerView: 'auto',
+	centeredSlides: true,
+	// spaceBetween: -10,
+	initialSlide: 2,
+	loop: true,
 
-  navigation: {
-    nextEl: '.safety__certificates-button-next',
-    prevEl: '.safety__certificates-button-prev',
-  },
-
+	navigation: {
+		nextEl: '.safety__certificates-button-next',
+		prevEl: '.safety__certificates-button-prev',
+	},
 });
 
 

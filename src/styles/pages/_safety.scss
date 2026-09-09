@@ -263,6 +263,10 @@
     list-style: none;
   }
 
+  &__certificates-swiper {
+    max-width: 1499px;
+  }
+
   &__certificates-button {
     all: unset;
     cursor: pointer;

@@ -1,21 +1,48 @@
 @use '../abstracts/variables' as variable;
 
-.team {
-  height: 100vh;
-  height: 100dvh;
+.body-team {
   background: linear-gradient(270deg, #2a3c47 0%, #010101 100%);
-  padding: 0 0 160px;
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-team {
+  flex: 1 0 auto;          /* grow: 1, shrink: 0, basis: auto */
+  width: 100%;  
+  display: flex;
+  align-items: end;
+  // justify-content: center;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // height: 100%;
+  // justify-items: flex-end;
+  // height: 100vh;
+  // height: 100dvh;
+  // background: linear-gradient(270deg, #2a3c47 0%, #010101 100%);
+  // padding: 0 0 160px;
 
   &__line {
     height: 100px;
     background: variable.$color-about-gray-bg;
+    // justify-self: end;
+    // flex-shrink: 0;
+    // margin: 0 0 160px;
   }
 
   &__container {
+    // flex: 1 0 auto;          /* grow: 1, shrink: 0, basis: auto */
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
+    margin-top: auto;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: end;
   }
 
   &__swiper-wrapper-with-control {

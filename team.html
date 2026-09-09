@@ -8,7 +8,7 @@
   <link rel="preload" href="/fonts/Futura-500.woff2" as="font" type="font/woff2" crossorigin>
   <title>Our team | Ynanch Hyzmat</title>
 </head>
-<body>
+<body class="body-team">
   <load src="/src/html/loader.html" />
   <script>
 /* Оверлей скрывается после загрузки страницы, но не раньше, чем
@@ -26,9 +26,9 @@
   else window.addEventListener('load', hide);
 })();
 </script>
-  <load src="/src/html/header.html" />
+  <load src="/src/html/header.html" theme="header_contacts"/>
 
-  <main>
+  <main class="main-team">
     <section class="team">
       <div class="container team__container">
         <h1 class="visually-hidden">Employees of Ynanch Hyzmat</h1>
@@ -515,12 +515,12 @@
 
         </div>
 
-        <div class="team__line"></div>
       </div>
+      <div class="team__line"></div>
     </section>
   </main>
 
-  <load src="/src/html/footer.html"/>
+  <load src="/src/html/footer.html" theme="footer_team"/>
 
   <script type="module" src="/src/js/main.js"></script>
 </body>
