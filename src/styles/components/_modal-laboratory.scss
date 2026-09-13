@@ -8,6 +8,12 @@
   inset: 0;
   z-index: 1;
   display: none;
+  padding: 130px 0;
+
+  &__background {
+    height: 100%;
+    overflow-y: auto;
+  }
 
   &__container {
     height: 100%;
@@ -20,6 +26,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-height: 905px) {
+      padding-top: 150px;
+    }
+
+    @media (max-height: 830px) {
+      padding-top: 180px;
+    }
   }
 
   &__title {
@@ -78,6 +92,13 @@
     color: variable.$color-main;
     border: none;
     cursor: pointer;
+    position: sticky;
+    bottom: 10px;
+
+    @media (max-height: 880px) {
+      position: static;
+    }
+
   }
 
 

@@ -4,7 +4,6 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/parallax';
 import '../styles/main.scss';
-import { tick } from './modules/timeZone';
 import 'virtual:svg-icons-register';
 import Swiper from 'swiper';
 // Добавляем импорт модуля Mousewheel
@@ -21,6 +20,11 @@ import { initNavigation, navigationLinkActive } from './modules/navigation';
 import { initRiskTimeline } from './modules/riskSection';
 import { initFeedbackForm } from './modules/form';
 import { initTurkmenistanMap } from './modules/turkmenistan/index';
+import { getCurrentTheme, initClock } from './modules/timeZone';
+import { initHeroTheme } from './modules/hero-theme';
+import { prewarmAll } from './image-prewarm.js';
+import { collectImageNames } from './welayat-image.js';
+import { CONTENT } from './modules/turkmenistan/data/content.js';
 
 
 // 1. Получаем текущий pathname без query-параметров и хэшей
@@ -49,14 +53,25 @@ if (import.meta.hot) {
   import.meta.hot.dispose(() => map?.destroy());
 }
 
+if (currentPath.includes('/sectors.html')) {
+  prewarmAll(collectImageNames(CONTENT.welayats));
+}
 
 
-tick();
+
+initClock();
 modalController({
   modal: '.modal',
   btnOpen: '.main-celebration__button',
   btnClose: '.modal__close',
   blockVisible: '.main-celebration__block',
+});
+
+modalController({
+  modal: '.modal-analyzers',
+  btnOpen: '.main-analyzers__button',
+  btnClose: '.modal-analyzers__close',
+  blockVisible: '.main-analyzers__block',
 });
 
 modalController({
@@ -82,7 +97,7 @@ modalController({
 initSearch();
 initNavigation();
 initRiskTimeline();
-
+initHeroTheme(getCurrentTheme);
 
 // Слайдер Главной страницы на весь экран
 
@@ -94,10 +109,10 @@ export const swiper = new Swiper('.main-swiper.swiper', {
   fadeEffect: {
     crossFade: true // Фоны будут плавно растворяться друг в друге, а не моргать
   },
-  autoplay: {
+  /* autoplay: {
     delay: 5000,
     disableOnInteraction: false // Автоплей не отключится навсегда, если пользователь кликнет по слайду
-  },
+  }, */
   mousewheel: { // Включаем и настраиваем управление колесом мыши
     sensitivity: 1, // Чувствительность скролла (1 — стандарт)
     thresholdDelta: 15, // Минимальный порог прокрутки, чтобы избежать случайных «двойных» переключений
@@ -407,4 +422,12 @@ setTarget(swiperTimeline); // подхватить реальное состоя
 };
 
 progressTimeline();
+
+
+if (import.meta.env.DEV) {
+  const { auditImages } = await import('../js/image-index.js');
+  const { watchSlotWidths } = await import('../js/dev-check-slots.js');
+  auditImages();
+  watchSlotWidths();
+}
 

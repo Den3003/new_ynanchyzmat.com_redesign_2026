@@ -200,9 +200,15 @@
 
 
 .tm-panel__wrapper-image {
+  width: 100%;
   max-width: 560px;
   height: 500px;
+  overflow: hidden;
   margin: 0 0 30px;
+
+  @media (max-width: 767px) {
+    max-width: 480px;      // ← и это
+  }
 }
 
 .tm-panel__image {

@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "images": "node scripts/check-images.mjs",
+    "images:plan": "node scripts/check-images.mjs --plan",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

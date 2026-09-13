@@ -25,6 +25,7 @@
 @use 'components/navigation';  //  Лист-меню в шапке
 @use 'components/modal';  //  Модальное окно
 @use 'components/modal-h2s';  //  Модальное окно секции main-h2s на главном экране
+@use 'components/modal-analyzers';  //  Модальное окно секции modal-analyzers на главном экране
 @use 'components/modal-laboratory';  //  Модальное окно секции main-laboratory на главном экране
 @use 'components/search';  //  Форма поиска по сайту
 @use 'components/main-swiper';  //  Стили Swiper`а на главной странице

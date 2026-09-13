@@ -249,7 +249,7 @@ export const CONTENT = {
 				'<strong>Balkan</strong> is the western gateway of the country: the Caspian shelf, the port of Turkmenbashi, and the refining cluster around it. Offshore platforms and coastal terminals make it the region with the highest concentration of marine logistics.',
 				'Services here focus on corrosion control in a saline atmosphere, subsea line inspection, and turnaround support for refining units.',
 			], */
-			imgWelayat: '/src/assets/images/welayats/balkan.jpg',
+			imgWelayat: 'welayats/balkan',
 		},
 		dashoguz: {
 			name: 'DASHOGUZ',
@@ -308,7 +308,7 @@ export const CONTENT = {
 				'Daşoguz lies in the north, in the lower reaches of the Amu Darya. Irrigated agriculture and gas transmission corridors toward the northern border define the regional infrastructure.',
 				'Typical scope: compressor station maintenance, line valve replacement, and integrity assessment of ageing transmission sections.',
 			], */
-			imgWelayat: '/src/assets/images/welayats/dashoguz.jpg',
+			imgWelayat: 'welayats/dashoguz',
 		},
 		ahal: {
 			name: 'AHAL',
@@ -457,7 +457,7 @@ export const CONTENT = {
 				'Ahal stretches along the Kopet Dag foothills and carries the capital region. Galkynysh and the gas-to-gasoline complex at Owadandepe put the heaviest processing load of the country in this welayat.',
 				'Work here is dominated by rotating equipment overhauls, static equipment inspection, and shutdown planning for processing trains.',
 			], */
-			imgWelayat: '/src/assets/images/welayats/ahal.jpg',
+			imgWelayat: 'welayats/ahal',
 		},
 		lebap: {
 			name: 'LEBAP',
@@ -577,7 +577,7 @@ export const CONTENT = {
 				'Lebap follows the Amu Darya from the southeast to the north, linking the Köýtendag foothills with the eastern export corridor. It is the main transit region for pipelines heading east.',
 				'Field activity covers pipeline crossings, cathodic protection surveys, and civil works along the right-of-way.',
 			], */
-			imgWelayat: '/src/assets/images/welayats/lebap.jpg',
+			imgWelayat: 'welayats/lebap',
 		},
 		mary: {
 			name: 'MARY',
@@ -713,7 +713,7 @@ export const CONTENT = {
 				'Mary is the country’s gas heartland: the Galkynysh group, the Mary industrial hub, and a dense network of gathering lines and processing plants around the Murgap oasis.',
 				'Services concentrate on wellhead equipment, gas treatment units, and environmental monitoring around production pads.',
 			], */
-			imgWelayat: '/src/assets/images/welayats/mary.jpg',
+			imgWelayat: 'welayats/mary',
 		},
 	},
 

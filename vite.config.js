@@ -52,6 +52,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true, // Очищать dist перед каждой сборкой
+
+    assetsInlineLimit: (filePath, content) => {
+      if (/\.(avif|webp|jpe?g|png|gif)$/i.test(filePath)) return false;
+      return content.length < 4096;
+    },
+
+    
     rolldownOptions: {
       // Передаем авто-найденные HTML страницы
       input: getRootHtmlInputs(),

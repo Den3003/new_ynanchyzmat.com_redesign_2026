@@ -1,3 +1,4 @@
+import { createWelayatImage } from '../../welayat-image.js';
 import { el } from '../utils.js';
 import { CONFIG } from './config.js';
 import { CONTENT } from './data/content.js';
@@ -275,19 +276,12 @@ function setPanel(dom, content, id) {
   const heading = id ? content.welayats[id]?.name : null;
 	const headingTitle = id ? content.welayats[id]?.title : null;
 	const titleIndustry = id ? content.welayats[id]?.titleIndustry : null;
-	const imgWelayat = id ? content.welayats[id]?.imgWelayat : null;
+	const imgWelayat = id ? content.welayats[id] : null;
 
   const nodes = [];
 
-  if (imgWelayat) {
-		const imgWrapper = document.createElement('div');
-    imgWrapper.className = 'tm-panel__wrapper-image';
-		const img = document.createElement('img');
-    img.className = 'tm-panel__image';
-    img.src = imgWelayat;
-    imgWrapper.appendChild(img);
-    nodes.push(imgWrapper);
-	}
+  const imgWrapper = createWelayatImage(imgWelayat);
+  if (imgWrapper) nodes.push(imgWrapper);
 
   if (heading) {
 		const title = document.createElement('h3');
@@ -329,6 +323,7 @@ function setPanel(dom, content, id) {
   // Перезапуск CSS-анимации появления.
   void dom.panel.offsetWidth;
   dom.panel.replaceChildren(...nodes);
+  dom.panel.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   dom.panel.classList.add('is-entering');
 }
 
