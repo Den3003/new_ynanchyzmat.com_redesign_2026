@@ -109,10 +109,10 @@ export const swiper = new Swiper('.main-swiper.swiper', {
   fadeEffect: {
     crossFade: true // Фоны будут плавно растворяться друг в друге, а не моргать
   },
-  /* autoplay: {
+  autoplay: {
     delay: 5000,
     disableOnInteraction: false // Автоплей не отключится навсегда, если пользователь кликнет по слайду
-  }, */
+  },
   mousewheel: { // Включаем и настраиваем управление колесом мыши
     sensitivity: 1, // Чувствительность скролла (1 — стандарт)
     thresholdDelta: 15, // Минимальный порог прокрутки, чтобы избежать случайных «двойных» переключений
